@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
-import { PlusIcon } from '@heroicons/react/20/solid'
-import { useApp } from '../context/AppContext'
+import {useState, useEffect} from 'react'
+import {PlusIcon} from '@heroicons/react/20/solid'
+import {useApp} from '../context/AppContext'
 import PlacementList from '../components/placements/PlacementList'
 
 export default function PlacementsPage() {
-	const { currentUser, addNotification } = useApp()
+	const {currentProfile, currentUser, addNotification} = useApp()
 	const [placements, setPlacements] = useState([])
 	const [isLoading, setIsLoading] = useState(true)
 	const [filterStatus, setFilterStatus] = useState('all')
@@ -97,7 +97,7 @@ export default function PlacementsPage() {
 			{/* Header */}
 			<div className="flex items-center justify-between">
 				<div>
-					<h1 className="text-2xl font-bold text-gray-900">My Placements</h1>
+					<h1 className="text-2xl font-bold text-gray-900">{currentProfile.name}'s Placements</h1>
 					<p className="mt-1 text-sm text-gray-500">Track your music placements and deals</p>
 				</div>
 				<button
@@ -105,7 +105,7 @@ export default function PlacementsPage() {
 					onClick={handleCreate}
 					className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
 				>
-					<PlusIcon className="h-5 w-5 mr-1.5" />
+					<PlusIcon className="h-5 w-5 mr-1.5"/>
 					Add Placement
 				</button>
 			</div>
@@ -150,7 +150,7 @@ export default function PlacementsPage() {
 			</div>
 
 			{/* Placements List */}
-			<PlacementList placements={filteredPlacements} isLoading={isLoading} onCreate={handleCreate} />
+			<PlacementList placements={filteredPlacements} isLoading={isLoading} onCreate={handleCreate}/>
 		</div>
 	)
 }

@@ -13,8 +13,8 @@ import ContributionScore from '../components/stats/ContributionScore'
 import TrackList from '../components/tracks/TrackList'
 import LoadingSpinner from '../components/shared/LoadingSpinner'
 
-export default function DashboardPage({...props}) {
-	const {currentUser, isLoading: userLoading} = useApp()
+export default function DashboardPage() {
+	const {currentProfile, currentUser, isLoading: userLoading} = useApp()
 	const [stats, setStats] = useState(null)
 	const [recentTracks, setRecentTracks] = useState([])
 	const [isLoading, setIsLoading] = useState(true)
@@ -97,7 +97,7 @@ export default function DashboardPage({...props}) {
 		<div className="space-y-6">
 			{/* Welcome Section */}
 			<div>
-				<h1 className="text-2xl font-bold text-gray-900">Welcome back, {currentUser?.firstName}!</h1>
+				<h1 className="text-2xl font-bold text-gray-900">Welcome back, {currentProfile.name}!</h1>
 				<p className="mt-1 text-sm text-gray-500">Here's what's happening with your music today.</p>
 			</div>
 

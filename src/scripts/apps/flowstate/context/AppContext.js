@@ -1,8 +1,8 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import {createContext, useContext, useState, useEffect} from 'react'
 
 const AppContext = createContext(undefined)
 
-export function AppProvider({ children }) {
+export function AppProvider({children, currentProfile}) {
 	const [currentUser, setCurrentUser] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
 	const [notifications, setNotifications] = useState([])
@@ -33,7 +33,7 @@ export function AppProvider({ children }) {
 
 	const addNotification = (notification) => {
 		const id = Date.now()
-		setNotifications((prev) => [...prev, { ...notification, id }])
+		setNotifications((prev) => [...prev, {...notification, id}])
 
 		// Auto-remove after 5 seconds
 		setTimeout(() => {
@@ -52,6 +52,7 @@ export function AppProvider({ children }) {
 		notifications,
 		addNotification,
 		removeNotification,
+		currentProfile
 	}
 
 	return <AppContext.Provider value={value}>{children}</AppContext.Provider>

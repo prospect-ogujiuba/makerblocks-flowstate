@@ -12434,9 +12434,7 @@ __webpack_require__.r(__webpack_exports__);
 function FlowState(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_context_AppContext__WEBPACK_IMPORTED_MODULE_0__.AppProvider, {
     ...props,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_layouts_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      ...props
-    })
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_layouts_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], {})
   });
 }
 
@@ -13700,7 +13698,8 @@ __webpack_require__.r(__webpack_exports__);
 
 const AppContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(undefined);
 function AppProvider({
-  children
+  children,
+  currentProfile
 }) {
   const [currentUser, setCurrentUser] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
   const [isLoading, setIsLoading] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
@@ -13748,7 +13747,8 @@ function AppProvider({
     isLoading,
     notifications,
     addNotification,
-    removeNotification
+    removeNotification,
+    currentProfile
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(AppContext.Provider, {
     value: value,
@@ -13858,11 +13858,9 @@ const userNavigation = [{
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
-function DashboardLayout({
-  logoUrl,
-  currentProfile = {}
-}) {
+function DashboardLayout() {
   const {
+    currentProfile,
     currentUser,
     notifications,
     removeNotification
@@ -14117,10 +14115,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function DashboardPage({
-  ...props
-}) {
+function DashboardPage() {
   const {
+    currentProfile,
     currentUser,
     isLoading: userLoading
   } = (0,_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.useApp)();
@@ -14209,7 +14206,7 @@ function DashboardPage({
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("h1", {
         className: "text-2xl font-bold text-gray-900",
-        children: ["Welcome back, ", currentUser?.firstName, "!"]
+        children: ["Welcome back, ", currentProfile.name, "!"]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
         className: "mt-1 text-sm text-gray-500",
         children: "Here's what's happening with your music today."
@@ -14524,6 +14521,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function PlacementsPage() {
   const {
+    currentProfile,
     currentUser,
     addNotification
   } = (0,_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.useApp)();
@@ -14608,9 +14606,9 @@ function PlacementsPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "flex items-center justify-between",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("h1", {
           className: "text-2xl font-bold text-gray-900",
-          children: "My Placements"
+          children: [currentProfile.name, "'s Placements"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
           className: "mt-1 text-sm text-gray-500",
           children: "Track your music placements and deals"
@@ -14999,6 +14997,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function TracksPage() {
   const {
+    currentProfile,
     currentUser,
     addNotification
   } = (0,_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.useApp)();
@@ -15122,9 +15121,9 @@ function TracksPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "flex items-center justify-between",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("h1", {
           className: "text-2xl font-bold text-gray-900",
-          children: "My Tracks"
+          children: [currentProfile.name, "'s Tracks"]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
           className: "mt-1 text-sm text-gray-500",
           children: "Manage and share your music library"

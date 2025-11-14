@@ -54,8 +54,8 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(' ')
 }
 
-export default function DashboardLayout({logoUrl, currentProfile = {}}) {
-	const {currentUser, notifications, removeNotification} = useApp()
+export default function DashboardLayout() {
+	const {currentProfile, currentUser, notifications, removeNotification} = useApp()
 	const [sidebarOpen, setSidebarOpen] = useState(false)
 	const [currentPage, setCurrentPage] = useState('dashboard')
 

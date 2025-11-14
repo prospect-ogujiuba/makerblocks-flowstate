@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
-import { MagnifyingGlassIcon, FunnelIcon, PlusIcon } from '@heroicons/react/20/solid'
-import { useApp } from '../context/AppContext'
+import {useState, useEffect} from 'react'
+import {MagnifyingGlassIcon, FunnelIcon, PlusIcon} from '@heroicons/react/20/solid'
+import {useApp} from '../context/AppContext'
 import TrackList from '../components/tracks/TrackList'
 import LoadingSpinner from '../components/shared/LoadingSpinner'
 
 export default function TracksPage() {
-	const { currentUser, addNotification } = useApp()
+	const {currentProfile, currentUser, addNotification} = useApp()
 	const [tracks, setTracks] = useState([])
 	const [isLoading, setIsLoading] = useState(true)
 	const [searchQuery, setSearchQuery] = useState('')
@@ -144,7 +144,7 @@ export default function TracksPage() {
 			{/* Header */}
 			<div className="flex items-center justify-between">
 				<div>
-					<h1 className="text-2xl font-bold text-gray-900">My Tracks</h1>
+					<h1 className="text-2xl font-bold text-gray-900">{currentProfile.name}'s Tracks</h1>
 					<p className="mt-1 text-sm text-gray-500">Manage and share your music library</p>
 				</div>
 				<button
@@ -152,7 +152,7 @@ export default function TracksPage() {
 					onClick={handleUpload}
 					className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
 				>
-					<PlusIcon className="h-5 w-5 mr-1.5" />
+					<PlusIcon className="h-5 w-5 mr-1.5"/>
 					Upload Track
 				</button>
 			</div>
@@ -199,18 +199,20 @@ export default function TracksPage() {
 						<span className="font-medium text-gray-900">{filteredTracks.length}</span> tracks
 					</span>
 					<span>
-						<span className="font-medium text-gray-900">{tracks.reduce((sum, t) => sum + t.playCount, 0)}</span>{' '}
+						<span
+							className="font-medium text-gray-900">{tracks.reduce((sum, t) => sum + t.playCount, 0)}</span>{' '}
 						total plays
 					</span>
 					<span>
-						<span className="font-medium text-gray-900">{tracks.reduce((sum, t) => sum + t.downloadCount, 0)}</span>{' '}
+						<span
+							className="font-medium text-gray-900">{tracks.reduce((sum, t) => sum + t.downloadCount, 0)}</span>{' '}
 						total downloads
 					</span>
 				</div>
 			)}
 
 			{/* Track List */}
-			<TrackList tracks={filteredTracks} isLoading={isLoading} onPlay={handlePlay} onDownload={handleDownload} />
+			<TrackList tracks={filteredTracks} isLoading={isLoading} onPlay={handlePlay} onDownload={handleDownload}/>
 		</div>
 	)
 }
