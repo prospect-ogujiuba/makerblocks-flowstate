@@ -27,7 +27,7 @@ import {
 	SparklesIcon,
 } from '@heroicons/react/24/outline'
 import {ChevronDownIcon, MagnifyingGlassIcon} from '@heroicons/react/20/solid'
-import {AppProvider, useApp} from '../context/AppContext'
+import {useApp} from '../context/AppContext'
 import DashboardPage from '../pages/DashboardPage'
 import TracksPage from '../pages/TracksPage'
 import PlacementsPage from '../pages/PlacementsPage'
@@ -45,8 +45,8 @@ const navigation = [
 ]
 
 const userNavigation = [
-	{name: 'Your profile', href: '#'},
-	{name: 'Settings', href: '#'},
+	{name: 'Your profile', href: '/wp-admin'},
+	{name: 'Settings', href: '/wp-admin'},
 	{name: 'Sign out', href: '#'},
 ]
 
@@ -54,7 +54,7 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(' ')
 }
 
-function DashboardLayoutContent({logoUrl, currentProfile = {}}) {
+export default function DashboardLayout({logoUrl, currentProfile = {}}) {
 	const {currentUser, notifications, removeNotification} = useApp()
 	const [sidebarOpen, setSidebarOpen] = useState(false)
 	const [currentPage, setCurrentPage] = useState('dashboard')
@@ -262,10 +262,4 @@ function DashboardLayoutContent({logoUrl, currentProfile = {}}) {
 	)
 }
 
-export default function FlowState() {
-	return (
-		<AppProvider>
-			<DashboardLayoutContent/>
-		</AppProvider>
-	)
-}
+

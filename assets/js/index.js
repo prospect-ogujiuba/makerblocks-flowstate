@@ -12341,32 +12341,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _apps_flowstate_layouts_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./apps/flowstate/layouts/DashboardLayout */ "./src/scripts/apps/flowstate/layouts/DashboardLayout.js");
+/* harmony import */ var _apps_flowstate_FlowState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./apps/flowstate/FlowState */ "./src/scripts/apps/flowstate/FlowState.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__);
-// MakerBlocks.js - Class-based consolidated component renderer
 
-
-// Import all React components
 
 
 class MakerBlocks {
   constructor() {
-    // Component registry - maps element IDs to their React components
     this.componentRegistry = [{
       id: "flowstate-app",
-      component: _apps_flowstate_layouts_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"],
+      component: _apps_flowstate_FlowState__WEBPACK_IMPORTED_MODULE_1__["default"],
       name: "FlowState"
     }];
     this.init();
   }
-
-  /**
-   * Parse component props from data attribute
-   * @param {HTMLElement} element - The DOM element
-   * @param {string} componentName - Name of component for error logging
-   * @returns {Object} - Parsed props object
-   */
   parseComponentProps(element, componentName) {
     const propsData = element.getAttribute("component-data");
     let props = {};
@@ -12379,12 +12368,6 @@ class MakerBlocks {
     }
     return props;
   }
-
-  /**
-   * Mount a single React component
-   * @param {Object} config - Component configuration
-   * @param {HTMLElement} element - Target DOM element
-   */
   mountComponent(config, element) {
     const {
       component: Component,
@@ -12396,15 +12379,10 @@ class MakerBlocks {
       root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Component, {
         ...props
       }));
-      // console.log(`✅ Mounted ${name} component`);
     } catch (error) {
-      // console.error(`❌ Failed to mount ${name} component:`, error);
+      console.error(`Failed to mount ${name} component:`, error);
     }
   }
-
-  /**
-   * Initialize all components present on the page
-   */
   initializeComponents() {
     this.componentRegistry.forEach(config => {
       const element = document.getElementById(config.id);
@@ -12413,25 +12391,15 @@ class MakerBlocks {
       }
     });
   }
-
-  /**
-   * Initialize the MakerBlocks system
-   */
   init() {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", () => {
         this.initializeComponents();
       });
     } else {
-      // DOM is already ready
       this.initializeComponents();
     }
   }
-
-  /**
-   * Manually mount a specific component (for dynamic usage)
-   * @param {string} componentId - The element ID to mount
-   */
   mountById(componentId) {
     const config = this.componentRegistry.find(c => c.id === componentId);
     const element = document.getElementById(componentId);
@@ -12443,6 +12411,34 @@ class MakerBlocks {
   }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MakerBlocks);
+
+/***/ }),
+
+/***/ "./src/scripts/apps/flowstate/FlowState.js":
+/*!*************************************************!*\
+  !*** ./src/scripts/apps/flowstate/FlowState.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ FlowState)
+/* harmony export */ });
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./context/AppContext */ "./src/scripts/apps/flowstate/context/AppContext.js");
+/* harmony import */ var _layouts_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./layouts/DashboardLayout */ "./src/scripts/apps/flowstate/layouts/DashboardLayout.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+function FlowState(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_context_AppContext__WEBPACK_IMPORTED_MODULE_0__.AppProvider, {
+    ...props,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_layouts_DashboardLayout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      ...props
+    })
+  });
+}
 
 /***/ }),
 
@@ -13777,7 +13773,7 @@ function useApp() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ FlowState)
+/* harmony export */   "default": () => (/* binding */ DashboardLayout)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -13851,10 +13847,10 @@ const navigation = [{
 }];
 const userNavigation = [{
   name: 'Your profile',
-  href: '#'
+  href: '/wp-admin'
 }, {
   name: 'Settings',
-  href: '#'
+  href: '/wp-admin'
 }, {
   name: 'Sign out',
   href: '#'
@@ -13862,7 +13858,7 @@ const userNavigation = [{
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
-function DashboardLayoutContent({
+function DashboardLayout({
   logoUrl,
   currentProfile = {}
 }) {
@@ -14087,11 +14083,6 @@ function DashboardLayoutContent({
     })
   });
 }
-function FlowState() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.AppProvider, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(DashboardLayoutContent, {})
-  });
-}
 
 /***/ }),
 
@@ -14126,7 +14117,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function DashboardPage() {
+function DashboardPage({
+  ...props
+}) {
   const {
     currentUser,
     isLoading: userLoading

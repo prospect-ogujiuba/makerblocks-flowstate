@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import {useEffect, useState} from 'react'
 import {
 	MusicalNoteIcon,
 	BriefcaseIcon,
@@ -7,14 +7,14 @@ import {
 	ChartBarIcon,
 	ArrowTrendingUpIcon,
 } from '@heroicons/react/24/outline'
-import { useApp } from '../context/AppContext'
+import {useApp} from '../context/AppContext'
 import StatCard from '../components/stats/StatCard'
 import ContributionScore from '../components/stats/ContributionScore'
 import TrackList from '../components/tracks/TrackList'
 import LoadingSpinner from '../components/shared/LoadingSpinner'
 
-export default function DashboardPage() {
-	const { currentUser, isLoading: userLoading } = useApp()
+export default function DashboardPage({...props}) {
+	const {currentUser, isLoading: userLoading} = useApp()
 	const [stats, setStats] = useState(null)
 	const [recentTracks, setRecentTracks] = useState([])
 	const [isLoading, setIsLoading] = useState(true)
@@ -84,13 +84,13 @@ export default function DashboardPage() {
 	}
 
 	if (userLoading || isLoading) {
-		return <LoadingSpinner size="lg" className="py-12" />
+		return <LoadingSpinner size="lg" className="py-12"/>
 	}
 
 	const scoreBreakdown = {
-		tracks: { count: stats.totalTracks, points: stats.totalTracks * 5 },
-		placements: { count: stats.totalPlacements, points: stats.totalPlacements * 20 },
-		masterclasses: { count: 2, points: 100 },
+		tracks: {count: stats.totalTracks, points: stats.totalTracks * 5},
+		placements: {count: stats.totalPlacements, points: stats.totalPlacements * 20},
+		masterclasses: {count: 2, points: 100},
 	}
 
 	return (
@@ -103,9 +103,9 @@ export default function DashboardPage() {
 
 			{/* Stats Grid */}
 			<div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-				<StatCard name="Total Tracks" value={stats.totalTracks} icon={MusicalNoteIcon} change="+3 this month" />
-				<StatCard name="Placements" value={stats.totalPlacements} icon={BriefcaseIcon} change="+2 this month" />
-				<StatCard name="Total Downloads" value={stats.totalDownloads} icon={ArrowTrendingUpIcon} change="+12%" />
+				<StatCard name="Total Tracks" value={stats.totalTracks} icon={MusicalNoteIcon} change="+3 this month"/>
+				<StatCard name="Placements" value={stats.totalPlacements} icon={BriefcaseIcon} change="+2 this month"/>
+				<StatCard name="Total Downloads" value={stats.totalDownloads} icon={ArrowTrendingUpIcon} change="+12%"/>
 				<StatCard
 					name="Masterclasses"
 					value={stats.enrolledMasterclasses}
@@ -129,7 +129,7 @@ export default function DashboardPage() {
 						View all
 					</a>
 				</div>
-				<TrackList tracks={recentTracks} isLoading={false} onPlay={(track) => console.log('Play:', track)} />
+				<TrackList tracks={recentTracks} isLoading={false} onPlay={(track) => console.log('Play:', track)}/>
 			</div>
 
 			{/* Quick Actions */}
