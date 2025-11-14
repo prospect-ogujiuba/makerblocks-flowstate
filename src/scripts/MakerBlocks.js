@@ -2,15 +2,13 @@
 import { createRoot } from "react-dom/client";
 
 // Import all React components
-import Header from "../blocks-dev/header/Header";
-import MakerStarter from "./apps/makerstarter/MakerStarter";
+import FlowState from "./apps/flowstate/layouts/DashboardLayout";
 
 class MakerBlocks {
 	constructor() {
 		// Component registry - maps element IDs to their React components
 		this.componentRegistry = [
-			{ id: "makerblocks-app", component: MakerStarter, name: "Makerstarter" },
-			// { id: "makerblocks-header", component: Header, name: "Header" },
+			{ id: "flowstate-app", component: FlowState, name: "FlowState" },
 		];
 
 		this.init();

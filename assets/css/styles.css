@@ -691,11 +691,11 @@ a:where(:not(.wp-element-button)) {
   .sticky {
     position: sticky;
   }
-  .-inset-0 {
-    inset: calc(var(--spacing) * 0);
-  }
   .-inset-1 {
     inset: calc(var(--spacing) * -1);
+  }
+  .-inset-1\.5 {
+    inset: calc(var(--spacing) * -1.5);
   }
   .inset-0 {
     inset: calc(var(--spacing) * 0);
@@ -822,9 +822,6 @@ a:where(:not(.wp-element-button)) {
   }
   .inset-px {
     inset: 1px;
-  }
-  .-inset-x-20 {
-    inset-inline: calc(var(--spacing) * -20);
   }
   .inset-x-0 {
     inset-inline: calc(var(--spacing) * 0);
@@ -1869,9 +1866,6 @@ a:where(:not(.wp-element-button)) {
   }
   .isolation-auto {
     isolation: auto;
-  }
-  .-z-10 {
-    z-index: -10;
   }
   .z-0 {
     z-index: 0;
@@ -4214,12 +4208,6 @@ a:where(:not(.wp-element-button)) {
   .w-96 {
     width: calc(var(--spacing) * 96);
   }
-  .w-277 {
-    width: calc(var(--spacing) * 277);
-  }
-  .w-304 {
-    width: calc(var(--spacing) * 304);
-  }
   .w-auto {
     width: auto;
   }
@@ -5562,9 +5550,6 @@ a:where(:not(.wp-element-button)) {
   }
   .transform {
     transform: var(--tw-rotate-x, ) var(--tw-rotate-y, ) var(--tw-rotate-z, ) var(--tw-skew-x, ) var(--tw-skew-y, );
-  }
-  .transform-gpu {
-    transform: translateZ(0) var(--tw-rotate-x, ) var(--tw-rotate-y, ) var(--tw-rotate-z, ) var(--tw-skew-x, ) var(--tw-skew-y, );
   }
   .animate-bounce {
     animation: var(--animate-bounce);
@@ -17145,6 +17130,14 @@ a:where(:not(.wp-element-button)) {
   .bg-gray-900 {
     background-color: var(--color-gray-900);
   }
+  .bg-gray-900\/10 {
+    background-color: color-mix(in srgb, oklch(21% 0.034 264.665deg) 10%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-gray-900\/10 {
+      background-color: color-mix(in oklab, var(--color-gray-900) 10%, transparent);
+    }
+  }
   .bg-gray-900\/80 {
     background-color: color-mix(in srgb, oklch(21% 0.034 264.665deg) 80%, transparent);
   }
@@ -17627,6 +17620,14 @@ a:where(:not(.wp-element-button)) {
   .bg-white {
     background-color: var(--color-white);
   }
+  .bg-white\/5 {
+    background-color: color-mix(in srgb, #fff 5%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-white\/5 {
+      background-color: color-mix(in oklab, var(--color-white) 5%, transparent);
+    }
+  }
   .bg-yellow-50 {
     background-color: var(--color-yellow-50);
   }
@@ -17692,24 +17693,6 @@ a:where(:not(.wp-element-button)) {
   }
   .bg-zinc-950 {
     background-color: var(--color-zinc-950);
-  }
-  .bg-linear-to-r {
-    --tw-gradient-position: to right;
-    background-image: linear-gradient(var(--tw-gradient-stops));
-  }
-  @supports (background-image: linear-gradient(in lab, red, red)) {
-    .bg-linear-to-r {
-      --tw-gradient-position: to right in oklab;
-    }
-  }
-  .bg-linear-to-t {
-    --tw-gradient-position: to top;
-    background-image: linear-gradient(var(--tw-gradient-stops));
-  }
-  @supports (background-image: linear-gradient(in lab, red, red)) {
-    .bg-linear-to-t {
-      --tw-gradient-position: to top in oklab;
-    }
   }
   .bg-gradient-to-b {
     --tw-gradient-position: to bottom in oklab;
@@ -30053,6 +30036,14 @@ a:where(:not(.wp-element-button)) {
   .ring-white {
     --tw-ring-color: var(--color-white);
   }
+  .ring-white\/10 {
+    --tw-ring-color: color-mix(in srgb, #fff 10%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .ring-white\/10 {
+      --tw-ring-color: color-mix(in oklab, var(--color-white) 10%, transparent);
+    }
+  }
   .ring-yellow-50 {
     --tw-ring-color: var(--color-yellow-50);
   }
@@ -30880,6 +30871,16 @@ a:where(:not(.wp-element-button)) {
   .ring-offset-zinc-950 {
     --tw-ring-offset-color: var(--color-zinc-950);
   }
+  .outline-hidden {
+    --tw-outline-style: none;
+    outline-style: none;
+  }
+  @media (forced-colors: active) {
+    .outline-hidden {
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+  }
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
@@ -31130,6 +31131,14 @@ a:where(:not(.wp-element-button)) {
   }
   .outline-gray-900 {
     outline-color: var(--color-gray-900);
+  }
+  .outline-gray-900\/5 {
+    outline-color: color-mix(in srgb, oklch(21% 0.034 264.665deg) 5%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .outline-gray-900\/5 {
+      outline-color: color-mix(in oklab, var(--color-gray-900) 5%, transparent);
+    }
   }
   .outline-gray-950 {
     outline-color: var(--color-gray-950);
@@ -32375,6 +32384,9 @@ a:where(:not(.wp-element-button)) {
       color: var(--color-indigo-600);
     }
   }
+  .placeholder\:text-gray-400::placeholder {
+    color: var(--color-gray-400);
+  }
   @media (hover: hover) {
     .hover\:border-blue-400:hover {
       border-color: var(--color-blue-400);
@@ -32406,8 +32418,23 @@ a:where(:not(.wp-element-button)) {
     }
   }
   @media (hover: hover) {
+    .hover\:bg-gray-800:hover {
+      background-color: var(--color-gray-800);
+    }
+  }
+  @media (hover: hover) {
     .hover\:bg-white:hover {
       background-color: var(--color-white);
+    }
+  }
+  @media (hover: hover) {
+    .hover\:bg-white\/5:hover {
+      background-color: color-mix(in srgb, #fff 5%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-white\/5:hover {
+        background-color: color-mix(in oklab, var(--color-white) 5%, transparent);
+      }
     }
   }
   @media (hover: hover) {
@@ -32443,6 +32470,11 @@ a:where(:not(.wp-element-button)) {
   @media (hover: hover) {
     .hover\:text-indigo-600:hover {
       color: var(--color-indigo-600);
+    }
+  }
+  @media (hover: hover) {
+    .hover\:text-white:hover {
+      color: var(--color-white);
     }
   }
   @media (hover: hover) {
@@ -32484,8 +32516,46 @@ a:where(:not(.wp-element-button)) {
     --tw-translate-x: -100%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
+  .data-closed\:scale-95[data-closed] {
+    --tw-scale-x: 95%;
+    --tw-scale-y: 95%;
+    --tw-scale-z: 95%;
+    scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
+  .data-closed\:transform[data-closed] {
+    transform: var(--tw-rotate-x, ) var(--tw-rotate-y, ) var(--tw-rotate-z, ) var(--tw-skew-x, ) var(--tw-skew-y, );
+  }
   .data-closed\:opacity-0[data-closed] {
     opacity: 0%;
+  }
+  .data-enter\:duration-100[data-enter] {
+    --tw-duration: 100ms;
+    transition-duration: 100ms;
+  }
+  .data-enter\:ease-out[data-enter] {
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
+  }
+  .data-focus\:bg-gray-50[data-focus] {
+    background-color: var(--color-gray-50);
+  }
+  .data-focus\:outline-hidden[data-focus] {
+    --tw-outline-style: none;
+    outline-style: none;
+  }
+  @media (forced-colors: active) {
+    .data-focus\:outline-hidden[data-focus] {
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+  }
+  .data-leave\:duration-75[data-leave] {
+    --tw-duration: 75ms;
+    transition-duration: 75ms;
+  }
+  .data-leave\:ease-in[data-leave] {
+    --tw-ease: var(--ease-in);
+    transition-timing-function: var(--ease-in);
   }
   .data-\[closed\]\:-translate-x-full[data-closed] {
     --tw-translate-x: -100%;
@@ -32577,6 +32647,12 @@ a:where(:not(.wp-element-button)) {
       line-height: var(--tw-leading, var(--text-lg--line-height));
     }
   }
+  @media (width >= 40rem) {
+    .sm\:text-sm\/6 {
+      font-size: var(--text-sm);
+      line-height: calc(var(--spacing) * 6);
+    }
+  }
   @media (width >= 48rem) {
     .md\:col-span-2 {
       grid-column: span 2/span 2;
@@ -32651,6 +32727,11 @@ a:where(:not(.wp-element-button)) {
     }
   }
   @media (width >= 64rem) {
+    .lg\:left-0 {
+      left: calc(var(--spacing) * 0);
+    }
+  }
+  @media (width >= 64rem) {
     .lg\:z-50 {
       z-index: 50;
     }
@@ -32696,8 +32777,23 @@ a:where(:not(.wp-element-button)) {
     }
   }
   @media (width >= 64rem) {
+    .lg\:h-6 {
+      height: calc(var(--spacing) * 6);
+    }
+  }
+  @media (width >= 64rem) {
+    .lg\:w-20 {
+      width: calc(var(--spacing) * 20);
+    }
+  }
+  @media (width >= 64rem) {
     .lg\:w-72 {
       width: calc(var(--spacing) * 72);
+    }
+  }
+  @media (width >= 64rem) {
+    .lg\:w-px {
+      width: 1px;
     }
   }
   @media (width >= 64rem) {
@@ -32721,8 +32817,38 @@ a:where(:not(.wp-element-button)) {
     }
   }
   @media (width >= 64rem) {
+    .lg\:items-center {
+      align-items: center;
+    }
+  }
+  @media (width >= 64rem) {
     .lg\:gap-8 {
       gap: calc(var(--spacing) * 8);
+    }
+  }
+  @media (width >= 64rem) {
+    .lg\:gap-x-6 {
+      column-gap: calc(var(--spacing) * 6);
+    }
+  }
+  @media (width >= 64rem) {
+    .lg\:overflow-y-auto {
+      overflow-y: auto;
+    }
+  }
+  @media (width >= 64rem) {
+    .lg\:bg-gray-900 {
+      background-color: var(--color-gray-900);
+    }
+  }
+  @media (width >= 64rem) {
+    .lg\:bg-gray-900\/10 {
+      background-color: color-mix(in srgb, oklch(21% 0.034 264.665deg) 10%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .lg\:bg-gray-900\/10 {
+        background-color: color-mix(in oklab, var(--color-gray-900) 10%, transparent);
+      }
     }
   }
   @media (width >= 64rem) {
@@ -32736,8 +32862,23 @@ a:where(:not(.wp-element-button)) {
     }
   }
   @media (width >= 64rem) {
+    .lg\:py-6 {
+      padding-block: calc(var(--spacing) * 6);
+    }
+  }
+  @media (width >= 64rem) {
+    .lg\:pb-4 {
+      padding-bottom: calc(var(--spacing) * 4);
+    }
+  }
+  @media (width >= 64rem) {
     .lg\:pb-28 {
       padding-bottom: calc(var(--spacing) * 28);
+    }
+  }
+  @media (width >= 64rem) {
+    .lg\:pl-20 {
+      padding-left: calc(var(--spacing) * 20);
     }
   }
   @media (width >= 64rem) {
@@ -32756,8 +32897,18 @@ a:where(:not(.wp-element-button)) {
     }
   }
   @media (width >= 80rem) {
+    .xl\:block {
+      display: block;
+    }
+  }
+  @media (width >= 80rem) {
     .xl\:pb-32 {
       padding-bottom: calc(var(--spacing) * 32);
+    }
+  }
+  @media (width >= 80rem) {
+    .xl\:pl-96 {
+      padding-left: calc(var(--spacing) * 96);
     }
   }
 }

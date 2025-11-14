@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "makerblocks/header",
+  "name": "makerblocks/flowstate-app",
   "version": "0.1.0",
-  "title": "Site Header",
+  "title": "App",
   "category": "makerblocks",
   "icon": "insert",
-  "description": "This contains the main navigation and document info",
+  "description": "This contains the main app",
   "example": {},
   "supports": {
     "html": false

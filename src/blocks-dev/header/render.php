@@ -99,7 +99,7 @@ $component_data = [
 <header
 	<?php
 	echo get_block_wrapper_attributes([
-		'id' => 'makerblocks-header',
+		'id' => 'flowstate-app',
 		// You can also put other attributes here if needed
 	]);
 	?>
