@@ -1726,6 +1726,9 @@ a:where(:not(.wp-element-button)) {
   .bottom-px {
     bottom: 1px;
   }
+  .-left-2 {
+    left: calc(var(--spacing) * -2);
+  }
   .left-0 {
     left: calc(var(--spacing) * 0);
   }
@@ -4360,6 +4363,12 @@ a:where(:not(.wp-element-button)) {
   }
   .max-w-96 {
     max-width: calc(var(--spacing) * 96);
+  }
+  .max-w-\[70ch\] {
+    max-width: 70ch;
+  }
+  .max-w-\[75ch\] {
+    max-width: 75ch;
   }
   .max-w-fit {
     max-width: fit-content;
@@ -10921,6 +10930,22 @@ a:where(:not(.wp-element-button)) {
   .border-white {
     border-color: var(--color-white);
   }
+  .border-white\/10 {
+    border-color: color-mix(in srgb, #fff 10%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-white\/10 {
+      border-color: color-mix(in oklab, var(--color-white) 10%, transparent);
+    }
+  }
+  .border-white\/15 {
+    border-color: color-mix(in srgb, #fff 15%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-white\/15 {
+      border-color: color-mix(in oklab, var(--color-white) 15%, transparent);
+    }
+  }
   .border-yellow-50 {
     border-color: var(--color-yellow-50);
   }
@@ -17032,6 +17057,14 @@ a:where(:not(.wp-element-button)) {
   .bg-emerald-300 {
     background-color: var(--color-emerald-300);
   }
+  .bg-emerald-300\/15 {
+    background-color: color-mix(in srgb, oklch(84.5% 0.143 164.978deg) 15%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-emerald-300\/15 {
+      background-color: color-mix(in oklab, var(--color-emerald-300) 15%, transparent);
+    }
+  }
   .bg-emerald-400 {
     background-color: var(--color-emerald-400);
   }
@@ -17506,6 +17539,30 @@ a:where(:not(.wp-element-button)) {
   .bg-slate-900 {
     background-color: var(--color-slate-900);
   }
+  .bg-slate-900\/50 {
+    background-color: color-mix(in srgb, oklch(20.8% 0.042 265.755deg) 50%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-slate-900\/50 {
+      background-color: color-mix(in oklab, var(--color-slate-900) 50%, transparent);
+    }
+  }
+  .bg-slate-900\/70 {
+    background-color: color-mix(in srgb, oklch(20.8% 0.042 265.755deg) 70%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-slate-900\/70 {
+      background-color: color-mix(in oklab, var(--color-slate-900) 70%, transparent);
+    }
+  }
+  .bg-slate-900\/80 {
+    background-color: color-mix(in srgb, oklch(20.8% 0.042 265.755deg) 80%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-slate-900\/80 {
+      background-color: color-mix(in oklab, var(--color-slate-900) 80%, transparent);
+    }
+  }
   .bg-slate-950 {
     background-color: var(--color-slate-950);
   }
@@ -17620,6 +17677,14 @@ a:where(:not(.wp-element-button)) {
   @supports (color: color-mix(in lab, red, red)) {
     .bg-white\/5 {
       background-color: color-mix(in oklab, var(--color-white) 5%, transparent);
+    }
+  }
+  .bg-white\/70 {
+    background-color: color-mix(in srgb, #fff 70%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-white\/70 {
+      background-color: color-mix(in oklab, var(--color-white) 70%, transparent);
     }
   }
   .bg-yellow-50 {
@@ -23908,6 +23973,9 @@ a:where(:not(.wp-element-button)) {
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
   }
+  .text-\[11px\] {
+    font-size: 11px;
+  }
   .leading-3 {
     --tw-leading: calc(var(--spacing) * 3);
     line-height: calc(var(--spacing) * 3);
@@ -29465,6 +29533,14 @@ a:where(:not(.wp-element-button)) {
   .ring-emerald-300 {
     --tw-ring-color: var(--color-emerald-300);
   }
+  .ring-emerald-300\/30 {
+    --tw-ring-color: color-mix(in srgb, oklch(84.5% 0.143 164.978) 30%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .ring-emerald-300\/30 {
+      --tw-ring-color: color-mix(in oklab, var(--color-emerald-300) 30%, transparent);
+    }
+  }
   .ring-emerald-400 {
     --tw-ring-color: var(--color-emerald-400);
   }
@@ -30037,6 +30113,14 @@ a:where(:not(.wp-element-button)) {
   @supports (color: color-mix(in lab, red, red)) {
     .ring-white\/10 {
       --tw-ring-color: color-mix(in oklab, var(--color-white) 10%, transparent);
+    }
+  }
+  .ring-white\/15 {
+    --tw-ring-color: color-mix(in srgb, #fff 15%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .ring-white\/15 {
+      --tw-ring-color: color-mix(in oklab, var(--color-white) 15%, transparent);
     }
   }
   .ring-yellow-50 {
@@ -32364,6 +32448,22 @@ a:where(:not(.wp-element-button)) {
   .ring-inset {
     --tw-ring-inset: inset;
   }
+  .selection\:bg-emerald-300\/30 *::selection {
+    background-color: color-mix(in srgb, oklch(84.5% 0.143 164.978deg) 30%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .selection\:bg-emerald-300\/30 *::selection {
+      background-color: color-mix(in oklab, var(--color-emerald-300) 30%, transparent);
+    }
+  }
+  .selection\:bg-emerald-300\/30::selection {
+    background-color: color-mix(in srgb, oklch(84.5% 0.143 164.978deg) 30%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .selection\:bg-emerald-300\/30::selection {
+      background-color: color-mix(in oklab, var(--color-emerald-300) 30%, transparent);
+    }
+  }
   .placeholder\:text-gray-400::placeholder {
     color: var(--color-gray-400);
   }
@@ -32408,10 +32508,49 @@ a:where(:not(.wp-element-button)) {
     }
   }
   @media (hover: hover) {
+    .hover\:underline:hover {
+      text-decoration-line: underline;
+    }
+  }
+  @media (hover: hover) {
     .hover\:shadow-sm:hover {
       --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
+  }
+  .focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+  .focus\:absolute:focus {
+    position: absolute;
+  }
+  .focus\:top-4:focus {
+    top: calc(var(--spacing) * 4);
+  }
+  .focus\:left-4:focus {
+    left: calc(var(--spacing) * 4);
+  }
+  .focus\:z-50:focus {
+    z-index: 50;
+  }
+  .focus\:rounded-md:focus {
+    border-radius: var(--radius-md);
+  }
+  .focus\:bg-slate-900:focus {
+    background-color: var(--color-slate-900);
+  }
+  .focus\:px-3:focus {
+    padding-inline: calc(var(--spacing) * 3);
+  }
+  .focus\:py-2:focus {
+    padding-block: calc(var(--spacing) * 2);
   }
   .focus\:ring-2:focus {
     --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
@@ -32513,6 +32652,11 @@ a:where(:not(.wp-element-button)) {
     }
   }
   @media (width >= 40rem) {
+    .sm\:h-36 {
+      height: calc(var(--spacing) * 36);
+    }
+  }
+  @media (width >= 40rem) {
     .sm\:w-48 {
       width: calc(var(--spacing) * 48);
     }
@@ -32563,6 +32707,34 @@ a:where(:not(.wp-element-button)) {
     }
   }
   @media (width >= 40rem) {
+    .sm\:py-20 {
+      padding-block: calc(var(--spacing) * 20);
+    }
+  }
+  @media (width >= 40rem) {
+    .sm\:py-32 {
+      padding-block: calc(var(--spacing) * 32);
+    }
+  }
+  @media (width >= 40rem) {
+    .sm\:text-3xl {
+      font-size: var(--text-3xl);
+      line-height: var(--tw-leading, var(--text-3xl--line-height));
+    }
+  }
+  @media (width >= 40rem) {
+    .sm\:text-4xl {
+      font-size: var(--text-4xl);
+      line-height: var(--tw-leading, var(--text-4xl--line-height));
+    }
+  }
+  @media (width >= 40rem) {
+    .sm\:text-lg {
+      font-size: var(--text-lg);
+      line-height: var(--tw-leading, var(--text-lg--line-height));
+    }
+  }
+  @media (width >= 40rem) {
     .sm\:text-sm {
       font-size: var(--text-sm);
       line-height: var(--tw-leading, var(--text-sm--line-height));
@@ -32586,6 +32758,28 @@ a:where(:not(.wp-element-button)) {
       --tw-scale-y: 95%;
       --tw-scale-z: 95%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  @media (width >= 48rem) {
+    .md\:h-44 {
+      height: calc(var(--spacing) * 44);
+    }
+  }
+  @media (width >= 48rem) {
+    .md\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  @media (width >= 48rem) {
+    .md\:text-4xl {
+      font-size: var(--text-4xl);
+      line-height: var(--tw-leading, var(--text-4xl--line-height));
+    }
+  }
+  @media (width >= 48rem) {
+    .md\:text-5xl {
+      font-size: var(--text-5xl);
+      line-height: var(--tw-leading, var(--text-5xl--line-height));
     }
   }
   @media (width >= 64rem) {
@@ -32636,6 +32830,11 @@ a:where(:not(.wp-element-button)) {
   @media (width >= 64rem) {
     .lg\:w-px {
       width: 1px;
+    }
+  }
+  @media (width >= 64rem) {
+    .lg\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
   @media (width >= 64rem) {

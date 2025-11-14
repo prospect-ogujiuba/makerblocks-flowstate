@@ -28,6 +28,7 @@ import {
 } from '@heroicons/react/24/outline'
 import {ChevronDownIcon, MagnifyingGlassIcon} from '@heroicons/react/20/solid'
 import {useApp} from '../context/AppContext'
+import Lander from "../pages/Lander";
 import DashboardPage from '../pages/DashboardPage'
 import TracksPage from '../pages/TracksPage'
 import PlacementsPage from '../pages/PlacementsPage'
@@ -36,7 +37,8 @@ import WorkshopsPage from '../pages/WorkshopsPage'
 import SyncOpportunitiesPage from '../pages/SyncOpportunitiesPage'
 
 const navigation = [
-	{name: 'Dashboard', href: 'dashboard', icon: HomeIcon, component: DashboardPage},
+	{name: 'Home', href: 'home', icon: HomeIcon, component: Lander},
+	{name: 'Dashboard', href: 'dashboard', icon: Bars3Icon, component: DashboardPage},
 	{name: 'Tracks', href: 'tracks', icon: MusicalNoteIcon, component: TracksPage},
 	{name: 'Placements', href: 'placements', icon: BriefcaseIcon, component: PlacementsPage},
 	{name: 'Masterclasses', href: 'masterclasses', icon: AcademicCapIcon, component: MasterclassesPage},
@@ -57,7 +59,7 @@ function classNames(...classes) {
 export default function DashboardLayout() {
 	const {currentProfile, currentUser, notifications, removeNotification} = useApp()
 	const [sidebarOpen, setSidebarOpen] = useState(false)
-	const [currentPage, setCurrentPage] = useState('dashboard')
+	const [currentPage, setCurrentPage] = useState('home')
 
 	const handleNavigation = (href) => {
 		setCurrentPage(href)
@@ -65,7 +67,7 @@ export default function DashboardLayout() {
 	}
 
 	const currentNavItem = navigation.find((item) => item.href === currentPage)
-	const PageComponent = currentNavItem?.component || DashboardPage
+	const PageComponent = currentNavItem?.component || Lander
 
 	return (
 		<>
