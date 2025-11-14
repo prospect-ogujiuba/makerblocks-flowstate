@@ -9,8 +9,7 @@
 function makerblocks_get_custom_blocks()
 {
 	return [
-		'app',
-		'header'
+		'flowstate-app',
 	];
 }
 
