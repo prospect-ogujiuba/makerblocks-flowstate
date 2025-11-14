@@ -9,7 +9,7 @@
 function makerblocks_get_custom_blocks()
 {
 	return [
-		'flowstate-app',
+		'flowstate',
 	];
 }
 
@@ -135,21 +135,22 @@ function makerblocks_custom_block_category($categories, $post)
 	return array_merge(
 		[
 			[
-				'slug'  => 'makerblocks-templates',
+				'slug' => 'makerblocks-templates',
 				'title' => __('Maker Blocks Templates', 'makerblocks'),
 			],
 			[
-				'slug'  => 'makerblocks-layout',
+				'slug' => 'makerblocks-layout',
 				'title' => __('Maker Blocks Layout', 'makerblocks'),
 			],
 			[
-				'slug'  => 'makerblocks',
+				'slug' => 'makerblocks',
 				'title' => __('Maker Blocks', 'makerblocks'),
 			],
 		],
 		$categories
 	);
 }
+
 add_filter('block_categories_all', 'makerblocks_custom_block_category', 10, 2);
 
 function makerblocks_allowed_block_types($allowed_block_types, $block_editor_context)
