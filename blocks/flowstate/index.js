@@ -2,20 +2,20 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/blocks-dev/flowstate-app/block.json":
-/*!*************************************************!*\
-  !*** ./src/blocks-dev/flowstate-app/block.json ***!
-  \*************************************************/
+/***/ "./src/blocks-dev/flowstate/block.json":
+/*!*********************************************!*\
+  !*** ./src/blocks-dev/flowstate/block.json ***!
+  \*********************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"makerblocks/flowstate-app","version":"0.1.0","title":"App","category":"makerblocks","icon":"insert","description":"Flowstate","example":{},"supports":{"html":false},"textdomain":"makerblocks","editorScript":"file:./index.js","render":"file:./render.php"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"makerblocks/flowstate","version":"0.1.0","title":"Flowstate","category":"makerblocks","icon":"insert","description":"Flowstate Application","example":{},"supports":{"html":false},"textdomain":"makerblocks","editorScript":"file:./index.js","render":"file:./render.php"}');
 
 /***/ }),
 
-/***/ "./src/blocks-dev/flowstate-app/edit.js":
-/*!**********************************************!*\
-  !*** ./src/blocks-dev/flowstate-app/edit.js ***!
-  \**********************************************/
+/***/ "./src/blocks-dev/flowstate/edit.js":
+/*!******************************************!*\
+  !*** ./src/blocks-dev/flowstate/edit.js ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -179,14 +179,14 @@ module.exports = window["ReactJSXRuntime"];
 var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
-/*!***********************************************!*\
-  !*** ./src/blocks-dev/flowstate-app/index.js ***!
-  \***********************************************/
+/*!*******************************************!*\
+  !*** ./src/blocks-dev/flowstate/index.js ***!
+  \*******************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks-dev/flowstate-app/edit.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks-dev/flowstate-app/block.json");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/blocks-dev/flowstate/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/blocks-dev/flowstate/block.json");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
