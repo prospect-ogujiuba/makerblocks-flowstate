@@ -21,19 +21,32 @@ import {
 	HomeIcon,
 	UsersIcon,
 	XMarkIcon,
+	MusicalNoteIcon,
+	BriefcaseIcon,
+	AcademicCapIcon,
+	SparklesIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { AppProvider, useApp } from '../context/AppContext'
+import DashboardPage from '../pages/DashboardPage'
+import TracksPage from '../pages/TracksPage'
+import PlacementsPage from '../pages/PlacementsPage'
+import MasterclassesPage from '../pages/MasterclassesPage'
+import WorkshopsPage from '../pages/WorkshopsPage'
+import SyncOpportunitiesPage from '../pages/SyncOpportunitiesPage'
 
 const navigation = [
-	{ name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-	{ name: 'Team', href: '#', icon: UsersIcon, current: false },
-	{ name: 'Projects', href: '#', icon: FolderIcon, current: false },
-	{ name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
-	{ name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
-	{ name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
+	{ name: 'Dashboard', href: 'dashboard', icon: HomeIcon, component: DashboardPage },
+	{ name: 'Tracks', href: 'tracks', icon: MusicalNoteIcon, component: TracksPage },
+	{ name: 'Placements', href: 'placements', icon: BriefcaseIcon, component: PlacementsPage },
+	{ name: 'Masterclasses', href: 'masterclasses', icon: AcademicCapIcon, component: MasterclassesPage },
+	{ name: 'Workshops', href: 'workshops', icon: UsersIcon, component: WorkshopsPage },
+	{ name: 'Sync Opportunities', href: 'sync', icon: SparklesIcon, component: SyncOpportunitiesPage },
 ]
+
 const userNavigation = [
 	{ name: 'Your profile', href: '#' },
+	{ name: 'Settings', href: '#' },
 	{ name: 'Sign out', href: '#' },
 ]
 
@@ -41,19 +54,21 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(' ')
 }
 
-export default function FlowState() {
+function DashboardLayoutContent() {
+	const { currentUser, notifications, removeNotification } = useApp()
 	const [sidebarOpen, setSidebarOpen] = useState(false)
+	const [currentPage, setCurrentPage] = useState('dashboard')
+
+	const handleNavigation = (href) => {
+		setCurrentPage(href)
+		setSidebarOpen(false)
+	}
+
+	const currentNavItem = navigation.find((item) => item.href === currentPage)
+	const PageComponent = currentNavItem?.component || DashboardPage
 
 	return (
 		<>
-			{/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-white">
-        <body class="h-full">
-        ```
-      */}
 			<div>
 				<Dialog open={sidebarOpen} onClose={setSidebarOpen} className="relative z-50 lg:hidden">
 					<DialogBackdrop
@@ -77,28 +92,24 @@ export default function FlowState() {
 
 							<div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-2 ring-1 ring-white/10">
 								<div className="flex h-16 shrink-0 items-center">
-									<img
-										alt="Your Company"
-										src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-										className="h-8 w-auto"
-									/>
+									<span className="text-xl font-bold text-white">FlowState</span>
 								</div>
 								<nav className="flex flex-1 flex-col">
 									<ul role="list" className="-mx-2 flex-1 space-y-1">
 										{navigation.map((item) => (
 											<li key={item.name}>
-												<a
-													href={item.href}
+												<button
+													onClick={() => handleNavigation(item.href)}
 													className={classNames(
-														item.current
+														currentPage === item.href
 															? 'bg-gray-800 text-white'
 															: 'text-gray-400 hover:bg-gray-800 hover:text-white',
-														'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold',
+														'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold w-full text-left',
 													)}
 												>
 													<item.icon aria-hidden="true" className="size-6 shrink-0" />
 													{item.name}
-												</a>
+												</button>
 											</li>
 										))}
 									</ul>
@@ -111,26 +122,24 @@ export default function FlowState() {
 				{/* Static sidebar for desktop */}
 				<div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-20 lg:overflow-y-auto lg:bg-gray-900 lg:pb-4">
 					<div className="relative flex h-16 shrink-0 items-center justify-center">
-						<img
-							alt="Your Company"
-							src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-							className="h-8 w-auto"
-						/>
+						<span className="text-2xl font-bold text-white">FS</span>
 					</div>
 					<nav className="relative mt-8">
 						<ul role="list" className="flex flex-col items-center space-y-1">
 							{navigation.map((item) => (
 								<li key={item.name}>
-									<a
-										href={item.href}
+									<button
+										onClick={() => handleNavigation(item.href)}
 										className={classNames(
-											item.current ? 'bg-white/5 text-white' : 'text-gray-400 hover:bg-white/5 hover:text-white',
+											currentPage === item.href
+												? 'bg-white/5 text-white'
+												: 'text-gray-400 hover:bg-white/5 hover:text-white',
 											'group flex gap-x-3 rounded-md p-3 text-sm/6 font-semibold',
 										)}
 									>
 										<item.icon aria-hidden="true" className="size-6 shrink-0" />
 										<span className="sr-only">{item.name}</span>
-									</a>
+									</button>
 								</li>
 							))}
 						</ul>
@@ -161,10 +170,33 @@ export default function FlowState() {
 								/>
 							</form>
 							<div className="flex items-center gap-x-4 lg:gap-x-6">
-								<button type="button" className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
-									<span className="sr-only">View notifications</span>
-									<BellIcon aria-hidden="true" className="size-6" />
-								</button>
+								{/* Notifications */}
+								<Menu as="div" className="relative">
+									<MenuButton className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
+										<span className="sr-only">View notifications</span>
+										<BellIcon aria-hidden="true" className="size-6" />
+										{notifications.length > 0 && (
+											<span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white" />
+										)}
+									</MenuButton>
+									<MenuItems
+										transition
+										className="absolute right-0 z-10 mt-2.5 w-80 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+									>
+										{notifications.length === 0 ? (
+											<div className="px-4 py-3 text-sm text-gray-500">No new notifications</div>
+										) : (
+											notifications.map((notification) => (
+												<MenuItem key={notification.id}>
+													<div className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-50">
+														<div className="font-medium">{notification.title}</div>
+														<div className="text-gray-500">{notification.message}</div>
+													</div>
+												</MenuItem>
+											))
+										)}
+									</MenuItems>
+								</Menu>
 
 								{/* Separator */}
 								<div aria-hidden="true" className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10" />
@@ -180,11 +212,11 @@ export default function FlowState() {
 											className="size-8 rounded-full bg-gray-50 outline -outline-offset-1 outline-black/5"
 										/>
 										<span className="hidden lg:flex lg:items-center">
-                      <span aria-hidden="true" className="ml-4 text-sm/6 font-semibold text-gray-900">
-                        Tom Cook
-                      </span>
-                      <ChevronDownIcon aria-hidden="true" className="ml-2 size-5 text-gray-400" />
-                    </span>
+											<span aria-hidden="true" className="ml-4 text-sm/6 font-semibold text-gray-900">
+												{currentUser?.displayName || 'User'}
+											</span>
+											<ChevronDownIcon aria-hidden="true" className="ml-2 size-5 text-gray-400" />
+										</span>
 									</MenuButton>
 									<MenuItems
 										transition
@@ -206,15 +238,21 @@ export default function FlowState() {
 						</div>
 					</div>
 
-					<main className="xl:pl-96">
-						<div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-6">{/* Main area */}</div>
+					<main className="py-10">
+						<div className="px-4 sm:px-6 lg:px-8">
+							<PageComponent />
+						</div>
 					</main>
 				</div>
-
-				<aside className="fixed top-16 bottom-0 left-20 hidden w-96 overflow-y-auto border-r border-gray-200 px-4 py-6 sm:px-6 lg:px-8 xl:block">
-					{/* Secondary column (hidden on smaller screens) */}
-				</aside>
 			</div>
 		</>
+	)
+}
+
+export default function FlowState() {
+	return (
+		<AppProvider>
+			<DashboardLayoutContent />
+		</AppProvider>
 	)
 }

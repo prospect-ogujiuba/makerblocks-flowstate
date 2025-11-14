@@ -1,5 +1,5 @@
 // MakerBlocks.js - Class-based consolidated component renderer
-import { createRoot } from "react-dom/client";
+import {createRoot} from "react-dom/client";
 
 // Import all React components
 import FlowState from "./apps/flowstate/layouts/DashboardLayout";
@@ -8,7 +8,7 @@ class MakerBlocks {
 	constructor() {
 		// Component registry - maps element IDs to their React components
 		this.componentRegistry = [
-			{ id: "flowstate-app", component: FlowState, name: "FlowState" },
+			{id: "flowstate-app", component: FlowState, name: "FlowState"},
 		];
 
 		this.init();
@@ -41,7 +41,7 @@ class MakerBlocks {
 	 * @param {HTMLElement} element - Target DOM element
 	 */
 	mountComponent(config, element) {
-		const { component: Component, name } = config;
+		const {component: Component, name} = config;
 		const props = this.parseComponentProps(element, name);
 
 		try {
