@@ -13862,7 +13862,10 @@ const userNavigation = [{
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
-function DashboardLayoutContent() {
+function DashboardLayoutContent({
+  logoUrl,
+  currentProfile = {}
+}) {
   const {
     currentUser,
     notifications,
@@ -13938,9 +13941,10 @@ function DashboardLayoutContent() {
         className: "hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-20 lg:overflow-y-auto lg:bg-gray-900 lg:pb-4",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
           className: "relative flex h-16 shrink-0 items-center justify-center",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
-            className: "text-2xl font-bold text-white",
-            children: "FS"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
+            alt: siteData.siteName,
+            src: `${siteData.siteUrl}/wp-content/uploads/flowstate-final-white.png`,
+            className: "h-12 w-auto"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("nav", {
           className: "relative mt-8",
@@ -14045,14 +14049,14 @@ function DashboardLayoutContent() {
                     children: "Open user menu"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
                     alt: "",
-                    src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+                    src: currentProfile.profileImage || `${siteData.siteUrl}/wp-content/plugins/makerblocks/assets/images/extras/placeholder-account-image.png`,
                     className: "size-8 rounded-full bg-gray-50 outline -outline-offset-1 outline-black/5"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
                     className: "hidden lg:flex lg:items-center",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                       "aria-hidden": "true",
                       className: "ml-4 text-sm/6 font-semibold text-gray-900",
-                      children: currentUser?.displayName || 'User'
+                      children: currentProfile.name || 'User'
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_heroicons_react_20_solid__WEBPACK_IMPORTED_MODULE_22__["default"], {
                       "aria-hidden": "true",
                       className: "ml-2 size-5 text-gray-400"

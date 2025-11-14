@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import {useState} from 'react'
 import {
 	Dialog,
 	DialogBackdrop,
@@ -26,8 +26,8 @@ import {
 	AcademicCapIcon,
 	SparklesIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import { AppProvider, useApp } from '../context/AppContext'
+import {ChevronDownIcon, MagnifyingGlassIcon} from '@heroicons/react/20/solid'
+import {AppProvider, useApp} from '../context/AppContext'
 import DashboardPage from '../pages/DashboardPage'
 import TracksPage from '../pages/TracksPage'
 import PlacementsPage from '../pages/PlacementsPage'
@@ -36,26 +36,26 @@ import WorkshopsPage from '../pages/WorkshopsPage'
 import SyncOpportunitiesPage from '../pages/SyncOpportunitiesPage'
 
 const navigation = [
-	{ name: 'Dashboard', href: 'dashboard', icon: HomeIcon, component: DashboardPage },
-	{ name: 'Tracks', href: 'tracks', icon: MusicalNoteIcon, component: TracksPage },
-	{ name: 'Placements', href: 'placements', icon: BriefcaseIcon, component: PlacementsPage },
-	{ name: 'Masterclasses', href: 'masterclasses', icon: AcademicCapIcon, component: MasterclassesPage },
-	{ name: 'Workshops', href: 'workshops', icon: UsersIcon, component: WorkshopsPage },
-	{ name: 'Sync Opportunities', href: 'sync', icon: SparklesIcon, component: SyncOpportunitiesPage },
+	{name: 'Dashboard', href: 'dashboard', icon: HomeIcon, component: DashboardPage},
+	{name: 'Tracks', href: 'tracks', icon: MusicalNoteIcon, component: TracksPage},
+	{name: 'Placements', href: 'placements', icon: BriefcaseIcon, component: PlacementsPage},
+	{name: 'Masterclasses', href: 'masterclasses', icon: AcademicCapIcon, component: MasterclassesPage},
+	{name: 'Workshops', href: 'workshops', icon: UsersIcon, component: WorkshopsPage},
+	{name: 'Sync Opportunities', href: 'sync', icon: SparklesIcon, component: SyncOpportunitiesPage},
 ]
 
 const userNavigation = [
-	{ name: 'Your profile', href: '#' },
-	{ name: 'Settings', href: '#' },
-	{ name: 'Sign out', href: '#' },
+	{name: 'Your profile', href: '#'},
+	{name: 'Settings', href: '#'},
+	{name: 'Sign out', href: '#'},
 ]
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(' ')
 }
 
-function DashboardLayoutContent() {
-	const { currentUser, notifications, removeNotification } = useApp()
+function DashboardLayoutContent({logoUrl, currentProfile = {}}) {
+	const {currentUser, notifications, removeNotification} = useApp()
 	const [sidebarOpen, setSidebarOpen] = useState(false)
 	const [currentPage, setCurrentPage] = useState('dashboard')
 
@@ -82,15 +82,18 @@ function DashboardLayoutContent() {
 							className="relative mr-16 flex w-full max-w-xs flex-1 transform transition duration-300 ease-in-out data-closed:-translate-x-full"
 						>
 							<TransitionChild>
-								<div className="absolute top-0 left-full flex w-16 justify-center pt-5 duration-300 ease-in-out data-closed:opacity-0">
-									<button type="button" onClick={() => setSidebarOpen(false)} className="-m-2.5 p-2.5">
+								<div
+									className="absolute top-0 left-full flex w-16 justify-center pt-5 duration-300 ease-in-out data-closed:opacity-0">
+									<button type="button" onClick={() => setSidebarOpen(false)}
+											className="-m-2.5 p-2.5">
 										<span className="sr-only">Close sidebar</span>
-										<XMarkIcon aria-hidden="true" className="size-6 text-white" />
+										<XMarkIcon aria-hidden="true" className="size-6 text-white"/>
 									</button>
 								</div>
 							</TransitionChild>
 
-							<div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-2 ring-1 ring-white/10">
+							<div
+								className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-2 ring-1 ring-white/10">
 								<div className="flex h-16 shrink-0 items-center">
 									<span className="text-xl font-bold text-white">FlowState</span>
 								</div>
@@ -107,7 +110,7 @@ function DashboardLayoutContent() {
 														'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold w-full text-left',
 													)}
 												>
-													<item.icon aria-hidden="true" className="size-6 shrink-0" />
+													<item.icon aria-hidden="true" className="size-6 shrink-0"/>
 													{item.name}
 												</button>
 											</li>
@@ -120,9 +123,14 @@ function DashboardLayoutContent() {
 				</Dialog>
 
 				{/* Static sidebar for desktop */}
-				<div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-20 lg:overflow-y-auto lg:bg-gray-900 lg:pb-4">
+				<div
+					className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-20 lg:overflow-y-auto lg:bg-gray-900 lg:pb-4">
 					<div className="relative flex h-16 shrink-0 items-center justify-center">
-						<span className="text-2xl font-bold text-white">FS</span>
+						<img
+							alt={siteData.siteName}
+							src={`${siteData.siteUrl}/wp-content/uploads/flowstate-final-white.png`}
+							className="h-12 w-auto"
+						/>
 					</div>
 					<nav className="relative mt-8">
 						<ul role="list" className="flex flex-col items-center space-y-1">
@@ -137,7 +145,7 @@ function DashboardLayoutContent() {
 											'group flex gap-x-3 rounded-md p-3 text-sm/6 font-semibold',
 										)}
 									>
-										<item.icon aria-hidden="true" className="size-6 shrink-0" />
+										<item.icon aria-hidden="true" className="size-6 shrink-0"/>
 										<span className="sr-only">{item.name}</span>
 									</button>
 								</li>
@@ -147,14 +155,16 @@ function DashboardLayoutContent() {
 				</div>
 
 				<div className="lg:pl-20">
-					<div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-xs sm:gap-x-6 sm:px-6 lg:px-8">
-						<button type="button" onClick={() => setSidebarOpen(true)} className="-m-2.5 p-2.5 text-gray-700 lg:hidden">
+					<div
+						className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-xs sm:gap-x-6 sm:px-6 lg:px-8">
+						<button type="button" onClick={() => setSidebarOpen(true)}
+								className="-m-2.5 p-2.5 text-gray-700 lg:hidden">
 							<span className="sr-only">Open sidebar</span>
-							<Bars3Icon aria-hidden="true" className="size-6" />
+							<Bars3Icon aria-hidden="true" className="size-6"/>
 						</button>
 
 						{/* Separator */}
-						<div aria-hidden="true" className="h-6 w-px bg-gray-900/10 lg:hidden" />
+						<div aria-hidden="true" className="h-6 w-px bg-gray-900/10 lg:hidden"/>
 
 						<div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
 							<form action="#" method="GET" className="grid flex-1 grid-cols-1">
@@ -174,9 +184,10 @@ function DashboardLayoutContent() {
 								<Menu as="div" className="relative">
 									<MenuButton className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
 										<span className="sr-only">View notifications</span>
-										<BellIcon aria-hidden="true" className="size-6" />
+										<BellIcon aria-hidden="true" className="size-6"/>
 										{notifications.length > 0 && (
-											<span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white" />
+											<span
+												className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"/>
 										)}
 									</MenuButton>
 									<MenuItems
@@ -188,7 +199,8 @@ function DashboardLayoutContent() {
 										) : (
 											notifications.map((notification) => (
 												<MenuItem key={notification.id}>
-													<div className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-50">
+													<div
+														className="block px-4 py-2 text-sm text-gray-900 hover:bg-gray-50">
 														<div className="font-medium">{notification.title}</div>
 														<div className="text-gray-500">{notification.message}</div>
 													</div>
@@ -199,23 +211,24 @@ function DashboardLayoutContent() {
 								</Menu>
 
 								{/* Separator */}
-								<div aria-hidden="true" className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10" />
+								<div aria-hidden="true" className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10"/>
 
 								{/* Profile dropdown */}
 								<Menu as="div" className="relative">
 									<MenuButton className="relative flex items-center">
-										<span className="absolute -inset-1.5" />
+										<span className="absolute -inset-1.5"/>
 										<span className="sr-only">Open user menu</span>
 										<img
 											alt=""
-											src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+											src={currentProfile.profileImage || `${siteData.siteUrl}/wp-content/plugins/makerblocks/assets/images/extras/placeholder-account-image.png`}
 											className="size-8 rounded-full bg-gray-50 outline -outline-offset-1 outline-black/5"
 										/>
 										<span className="hidden lg:flex lg:items-center">
-											<span aria-hidden="true" className="ml-4 text-sm/6 font-semibold text-gray-900">
-												{currentUser?.displayName || 'User'}
+											<span aria-hidden="true"
+												  className="ml-4 text-sm/6 font-semibold text-gray-900">
+												{currentProfile.name || 'User'}
 											</span>
-											<ChevronDownIcon aria-hidden="true" className="ml-2 size-5 text-gray-400" />
+											<ChevronDownIcon aria-hidden="true" className="ml-2 size-5 text-gray-400"/>
 										</span>
 									</MenuButton>
 									<MenuItems
@@ -240,7 +253,7 @@ function DashboardLayoutContent() {
 
 					<main className="py-10">
 						<div className="px-4 sm:px-6 lg:px-8">
-							<PageComponent />
+							<PageComponent/>
 						</div>
 					</main>
 				</div>
@@ -252,7 +265,7 @@ function DashboardLayoutContent() {
 export default function FlowState() {
 	return (
 		<AppProvider>
-			<DashboardLayoutContent />
+			<DashboardLayoutContent/>
 		</AppProvider>
 	)
 }
