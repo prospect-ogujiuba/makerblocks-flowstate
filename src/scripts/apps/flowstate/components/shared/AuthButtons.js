@@ -1,3 +1,5 @@
+import {ArrowRightIcon} from "@heroicons/react/24/outline";
+
 export default function AuthButtons({
 	loginUrl,
 	registrationUrl,
@@ -7,17 +9,17 @@ export default function AuthButtons({
 
 	return (
 		<div className={`${className}`}>
-			<a
-				href={registrationUrl}
-				className="justify-center rounded-md bg-stone-600 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-stone-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors duration-200"
+			<button
+				disabled
+				className="inline-flex items-center justify-center rounded-lg bg-slate-600 px-4 py-2 text-slate-400 font-semibold shadow-sm"
 			>
-				Get Started
-			</a>
+				Join <i className="ml-2 bi bi-hourglass-split"></i>
+			</button>
 			<a
 				href={loginUrl}
-				className="justify-center rounded-md bg-white px-6 py-3 text-base font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 transition-colors duration-200"
+				className="inline-flex items-center justify-center rounded-lg bg-white/10 border border-white px-4 py-2 text-base font-semibold text-white shadow-sm hover:bg-white/15 transition-colors duration-200"
 			>
-				Log In
+				Log In <i className="ml-2 bi bi-box-arrow-right"></i>
 			</a>
 		</div>
 	)

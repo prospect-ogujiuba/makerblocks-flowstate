@@ -73,9 +73,7 @@ export default function MasterclassCard({ masterclass, onEnroll, onView }) {
 				</div>
 
 				<div className="mt-4 flex items-center justify-between">
-					<span className="text-lg font-bold text-gray-900">
-						{formatPrice(masterclass.price, masterclass.isFree)}
-					</span>
+
 					<div className="flex space-x-2">
 						{onView && (
 							<button
