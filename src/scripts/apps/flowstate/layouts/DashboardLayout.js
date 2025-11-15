@@ -1,6 +1,7 @@
 'use client'
 
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
+import {Link, Outlet, useLocation} from 'react-router-dom'
 import {
 	Dialog,
 	DialogBackdrop,
@@ -30,29 +31,22 @@ import {
 } from '@heroicons/react/24/outline'
 import {ChevronDownIcon, MagnifyingGlassIcon} from '@heroicons/react/20/solid'
 import {useApp} from '../context/AppContext'
-import DashboardPage from '../pages/DashboardPage'
-import TracksPage from '../pages/TracksPage'
-import PlacementsPage from '../pages/PlacementsPage'
-import MasterclassesPage from '../pages/MasterclassesPage'
-import WorkshopsPage from '../pages/WorkshopsPage'
-import SyncOpportunitiesPage from '../pages/SyncOpportunitiesPage'
-import SettingsPage from '../pages/SettingsPage'
 
 const navigation = [
-	{name: 'Dashboard', href: 'dashboard', icon: HomeIcon, component: DashboardPage},
-	{name: 'Tracks', href: 'tracks', icon: MusicalNoteIcon, component: TracksPage},
-	{name: 'Placements', href: 'placements', icon: BriefcaseIcon, component: PlacementsPage},
-	{name: 'Masterclasses', href: 'masterclasses', icon: AcademicCapIcon, component: MasterclassesPage},
-	{name: 'Workshops', href: 'workshops', icon: UsersIcon, component: WorkshopsPage},
-	{name: 'Sync Opportunities', href: 'sync', icon: SparklesIcon, component: SyncOpportunitiesPage},
-	{name: 'Settings', href: '/wp-admin', icon: Cog6ToothIcon, adminOnly: true, external: true},
-	{name: 'Profile', href: 'profile', icon: UserCircleIcon, component: SettingsPage, hidden: true},
+	{name: 'Dashboard', path: '/dashboard', icon: HomeIcon},
+	{name: 'Tracks', path: '/tracks', icon: MusicalNoteIcon},
+	{name: 'Placements', path: '/placements', icon: BriefcaseIcon},
+	{name: 'Masterclasses', path: '/masterclasses', icon: AcademicCapIcon},
+	{name: 'Workshops', path: '/workshops', icon: UsersIcon},
+	{name: 'Sync Opportunities', path: '/sync', icon: SparklesIcon},
+	{name: 'Settings', path: '/wp-admin', icon: Cog6ToothIcon, adminOnly: true, external: true},
+	{name: 'Profile', path: '/profile', icon: UserCircleIcon, hidden: true},
 ]
 
 const userNavigation = [
-	{name: 'Your profile', href: 'profile', internal: true},
-	{name: 'Settings', href: '/wp-admin'},
-	{name: 'Sign out', href: '#'},
+	{name: 'Your profile', path: '/profile', internal: true},
+	{name: 'Settings', path: '/wp-admin'},
+	{name: 'Sign out', path: '#'},
 ]
 
 function classNames(...classes) {
@@ -62,15 +56,15 @@ function classNames(...classes) {
 export default function DashboardLayout() {
 	const {currentProfile, currentUser, notifications, removeNotification, logoutUrl} = useApp()
 	const [sidebarOpen, setSidebarOpen] = useState(false)
-	const [currentPage, setCurrentPage] = useState('dashboard')
+	const location = useLocation()
 
-	const handleNavigation = (href) => {
-		setCurrentPage(href)
-		setSidebarOpen(false)
-	}
-
-	const currentNavItem = navigation.find((item) => item.href === currentPage)
-	const PageComponent = currentNavItem?.component || DashboardPage
+	// Update document title based on current route
+	useEffect(() => {
+		const currentNavItem = navigation.find((item) => item.path === location.pathname)
+		if (currentNavItem) {
+			document.title = `${siteData.siteName} - ${currentNavItem.name}`
+		}
+	}, [location.pathname])
 
 	return (
 		<>
@@ -108,18 +102,32 @@ export default function DashboardLayout() {
 											.filter(item => !item.hidden && (!item.adminOnly || currentProfile?.isAdmin))
 											.map((item) => (
 												<li key={item.name}>
-													<button
-														onClick={() => item.external ? window.location.href = item.href : handleNavigation(item.href)}
-														className={classNames(
-															currentPage === item.href
-																? 'bg-gray-800 text-white'
-																: 'text-gray-400 hover:bg-gray-800 hover:text-white',
-															'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold w-full text-left',
-														)}
-													>
-														<item.icon aria-hidden="true" className="size-6 shrink-0"/>
-														{item.name}
-													</button>
+													{item.external ? (
+														<a
+															href={item.path}
+															className={classNames(
+																'text-gray-400 hover:bg-gray-800 hover:text-white',
+																'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold',
+															)}
+														>
+															<item.icon aria-hidden="true" className="size-6 shrink-0"/>
+															{item.name}
+														</a>
+													) : (
+														<Link
+															to={item.path}
+															onClick={() => setSidebarOpen(false)}
+															className={classNames(
+																location.pathname === item.path
+																	? 'bg-gray-800 text-white'
+																	: 'text-gray-400 hover:bg-gray-800 hover:text-white',
+																'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold',
+															)}
+														>
+															<item.icon aria-hidden="true" className="size-6 shrink-0"/>
+															{item.name}
+														</Link>
+													)}
 												</li>
 											))}
 									</ul>
@@ -145,18 +153,31 @@ export default function DashboardLayout() {
 								.filter(item => !item.hidden && (!item.adminOnly || currentProfile?.isAdmin))
 								.map((item) => (
 									<li key={item.name}>
-										<button
-											onClick={() => item.external ? window.location.href = item.href : handleNavigation(item.href)}
-											className={classNames(
-												currentPage === item.href
-													? 'bg-white/5 text-white'
-													: 'text-gray-400 hover:bg-white/5 hover:text-white',
-												'group flex gap-x-3 rounded-md p-3 text-sm/6 font-semibold',
-											)}
-										>
-											<item.icon aria-hidden="true" className="size-6 shrink-0"/>
-											<span className="sr-only">{item.name}</span>
-										</button>
+										{item.external ? (
+											<a
+												href={item.path}
+												className={classNames(
+													'text-gray-400 hover:bg-white/5 hover:text-white',
+													'group flex gap-x-3 rounded-md p-3 text-sm/6 font-semibold',
+												)}
+											>
+												<item.icon aria-hidden="true" className="size-6 shrink-0"/>
+												<span className="sr-only">{item.name}</span>
+											</a>
+										) : (
+											<Link
+												to={item.path}
+												className={classNames(
+													location.pathname === item.path
+														? 'bg-white/5 text-white'
+														: 'text-gray-400 hover:bg-white/5 hover:text-white',
+													'group flex gap-x-3 rounded-md p-3 text-sm/6 font-semibold',
+												)}
+											>
+												<item.icon aria-hidden="true" className="size-6 shrink-0"/>
+												<span className="sr-only">{item.name}</span>
+											</Link>
+										)}
 									</li>
 								))}
 						</ul>
@@ -247,15 +268,15 @@ export default function DashboardLayout() {
 										{userNavigation.map((item) => (
 											<MenuItem key={item.name}>
 												{item.internal ? (
-													<button
-														onClick={() => handleNavigation(item.href)}
+													<Link
+														to={item.path}
 														className="block w-full text-left px-3 py-1 text-sm/6 text-gray-900 data-focus:bg-gray-50 data-focus:outline-hidden"
 													>
 														{item.name}
-													</button>
+													</Link>
 												) : (
 													<a
-														href={item.name === 'Sign out' ? logoutUrl : item.href}
+														href={item.name === 'Sign out' ? logoutUrl : item.path}
 														className="block px-3 py-1 text-sm/6 text-gray-900 data-focus:bg-gray-50 data-focus:outline-hidden"
 													>
 														{item.name}
@@ -271,7 +292,7 @@ export default function DashboardLayout() {
 
 					<main className="py-10">
 						<div className="px-4 sm:px-6 lg:px-8">
-							<PageComponent/>
+							<Outlet />
 						</div>
 					</main>
 				</div>
