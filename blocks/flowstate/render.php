@@ -78,20 +78,27 @@ $current_path = $current_path === '' ? '/' : $current_path;
 
 // // Build menu (menu term ID = 7)
 $main_menu = makerblocks_get_menu_tree_by_id(7, $current_path);
-$current_user = wp_get_current_user();
-$profile_image = get_avatar_url($current_user);
 $registration_url = wp_registration_url();
 $login_url = wp_login_url();
 $logoUrl = site_url('wp-content/uploads/flowstate-final-white.png');
 
-$component_data = [
-	'currentPath' => $current_path,
-	'mainMenu' => $main_menu,
-	'currentProfile' => [
+// Only populate currentProfile if user is logged in
+$current_profile = null;
+if (is_user_logged_in()) {
+	$current_user = wp_get_current_user();
+	$profile_image = get_avatar_url($current_user);
+	$current_profile = [
+		'id' => $current_user->ID,
 		'name' => $current_user->display_name ? $current_user->display_name : $current_user->user_nicename,
 		'email' => $current_user->user_email,
 		'profileImage' => $profile_image
-	],
+	];
+}
+
+$component_data = [
+	'currentPath' => $current_path,
+	'mainMenu' => $main_menu,
+	'currentProfile' => $current_profile,
 	'registrationUrl' => $registration_url,
 	'loginUrl' => $login_url,
 	'logoUrl' => $logoUrl,

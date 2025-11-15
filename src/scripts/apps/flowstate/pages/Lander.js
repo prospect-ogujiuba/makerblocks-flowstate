@@ -1,4 +1,6 @@
-export default function Lander() {
+import AuthButtons from '../components/shared/AuthButtons'
+
+export default function Lander({loginUrl, registrationUrl}) {
 	const currentYear = new Date().getFullYear()
 
 	return (
@@ -27,6 +29,14 @@ export default function Lander() {
 					<p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-300">
 						Manage tracks, placements, artist development, and collaborations in one powerful platform.
 					</p>
+
+					<div className="mt-8 flex justify-center">
+						<AuthButtons
+							loginUrl={loginUrl}
+							registrationUrl={registrationUrl}
+							variant="horizontal"
+						/>
+					</div>
 				</div>
 			</section>
 

@@ -18051,12 +18051,6 @@
       background-color: color-mix(in oklab, var(--color-slate-900) 70%, transparent);
     }
   }
-  .bg-slate-900\/80 {
-    background-color: color-mix(in srgb, oklch(20.8% 0.042 265.755) 80%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-slate-900) 80%, transparent);
-    }
-  }
   .bg-slate-950 {
     background-color: var(--color-slate-950);
   }
@@ -32609,6 +32603,12 @@
       --tw-ring-inset: inset;
     }
   }
+  .focus-visible\:outline {
+    &:focus-visible {
+      outline-style: var(--tw-outline-style);
+      outline-width: 1px;
+    }
+  }
   .focus-visible\:outline-2 {
     &:focus-visible {
       outline-style: var(--tw-outline-style);
@@ -32709,11 +32709,6 @@
   .sm\:my-8 {
     @media (width >= 40rem) {
       margin-block: calc(var(--spacing) * 8);
-    }
-  }
-  .sm\:h-36 {
-    @media (width >= 40rem) {
-      height: calc(var(--spacing) * 36);
     }
   }
   .sm\:w-48 {
@@ -32822,11 +32817,6 @@
         --tw-scale-z: 95%;
         scale: var(--tw-scale-x) var(--tw-scale-y);
       }
-    }
-  }
-  .md\:h-44 {
-    @media (width >= 48rem) {
-      height: calc(var(--spacing) * 44);
     }
   }
   .md\:grid-cols-3 {
@@ -32944,11 +32934,6 @@
       padding-inline: calc(var(--spacing) * 8);
     }
   }
-  .lg\:py-6 {
-    @media (width >= 64rem) {
-      padding-block: calc(var(--spacing) * 6);
-    }
-  }
   .lg\:pb-4 {
     @media (width >= 64rem) {
       padding-bottom: calc(var(--spacing) * 4);
@@ -32957,16 +32942,6 @@
   .lg\:pl-20 {
     @media (width >= 64rem) {
       padding-left: calc(var(--spacing) * 20);
-    }
-  }
-  .xl\:block {
-    @media (width >= 80rem) {
-      display: block;
-    }
-  }
-  .xl\:pl-96 {
-    @media (width >= 80rem) {
-      padding-left: calc(var(--spacing) * 96);
     }
   }
 }

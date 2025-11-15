@@ -2,34 +2,42 @@ import {createContext, useContext, useState, useEffect} from 'react'
 
 const AppContext = createContext(undefined)
 
-export function AppProvider({children, currentProfile}) {
+export function AppProvider({children, currentProfile, loginUrl, registrationUrl}) {
 	const [currentUser, setCurrentUser] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
 	const [notifications, setNotifications] = useState([])
 
-	useEffect(() => {
-		// Simulate fetching current user
-		// In production, this would be an API call
-		const mockUser = {
-			id: 1,
-			uuid: '123e4567-e89b-12d3-a456-426614174000',
-			email: 'tom@example.com',
-			firstName: 'Tom',
-			lastName: 'Cook',
-			displayName: 'Tom Cook',
-			userType: 'producer',
-			isPioneer: true,
-			isFounder: false,
-			isBoardMember: false,
-			contributionScore: 245,
-			membershipType: 'pioneer',
-		}
+	// Compute authentication state based on currentProfile from WordPress
+	const isAuthenticated = !!currentProfile?.email
 
+	useEffect(() => {
+		// If user is authenticated (WordPress provided currentProfile), use it
+		// Otherwise, set currentUser to null (unauthenticated state)
 		setTimeout(() => {
-			setCurrentUser(mockUser)
+			if (isAuthenticated) {
+				// Map WordPress currentProfile to our user structure
+				const user = {
+					id: currentProfile.id || 1,
+					email: currentProfile.email,
+					firstName: currentProfile.firstName || '',
+					lastName: currentProfile.lastName || '',
+					displayName: currentProfile.name || currentProfile.email,
+					profileImage: currentProfile.profileImage || '',
+					// Additional fields can be added as WordPress provides them
+					userType: currentProfile.userType || 'producer',
+					isPioneer: currentProfile.isPioneer || false,
+					isFounder: currentProfile.isFounder || false,
+					isBoardMember: currentProfile.isBoardMember || false,
+					contributionScore: currentProfile.contributionScore || 0,
+					membershipType: currentProfile.membershipType || 'standard',
+				}
+				setCurrentUser(user)
+			} else {
+				setCurrentUser(null)
+			}
 			setIsLoading(false)
 		}, 500)
-	}, [])
+	}, [currentProfile, isAuthenticated])
 
 	const addNotification = (notification) => {
 		const id = Date.now()
@@ -49,10 +57,13 @@ export function AppProvider({children, currentProfile}) {
 		currentUser,
 		setCurrentUser,
 		isLoading,
+		isAuthenticated,
 		notifications,
 		addNotification,
 		removeNotification,
-		currentProfile
+		currentProfile,
+		loginUrl,
+		registrationUrl
 	}
 
 	return <AppContext.Provider value={value}>{children}</AppContext.Provider>
