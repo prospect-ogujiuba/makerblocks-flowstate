@@ -80,6 +80,7 @@ $current_path = $current_path === '' ? '/' : $current_path;
 $main_menu = makerblocks_get_menu_tree_by_id(7, $current_path);
 $registration_url = wp_registration_url();
 $login_url = wp_login_url();
+$logout_url = wp_logout_url(home_url());
 $logoUrl = site_url('wp-content/uploads/flowstate-final-white.png');
 
 // Only populate currentProfile if user is logged in
@@ -91,7 +92,8 @@ if (is_user_logged_in()) {
 		'id' => $current_user->ID,
 		'name' => $current_user->display_name ? $current_user->display_name : $current_user->user_nicename,
 		'email' => $current_user->user_email,
-		'profileImage' => $profile_image
+		'profileImage' => $profile_image,
+		'isAdmin' => current_user_can('administrator')
 	];
 }
 
@@ -101,6 +103,7 @@ $component_data = [
 	'currentProfile' => $current_profile,
 	'registrationUrl' => $registration_url,
 	'loginUrl' => $login_url,
+	'logoutUrl' => $logout_url,
 	'logoUrl' => $logoUrl,
 ];
 ?>

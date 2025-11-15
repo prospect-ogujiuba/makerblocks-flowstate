@@ -25,6 +25,8 @@ import {
 	BriefcaseIcon,
 	AcademicCapIcon,
 	SparklesIcon,
+	Cog6ToothIcon,
+	UserCircleIcon,
 } from '@heroicons/react/24/outline'
 import {ChevronDownIcon, MagnifyingGlassIcon} from '@heroicons/react/20/solid'
 import {useApp} from '../context/AppContext'
@@ -34,6 +36,7 @@ import PlacementsPage from '../pages/PlacementsPage'
 import MasterclassesPage from '../pages/MasterclassesPage'
 import WorkshopsPage from '../pages/WorkshopsPage'
 import SyncOpportunitiesPage from '../pages/SyncOpportunitiesPage'
+import SettingsPage from '../pages/SettingsPage'
 
 const navigation = [
 	{name: 'Dashboard', href: 'dashboard', icon: HomeIcon, component: DashboardPage},
@@ -42,10 +45,12 @@ const navigation = [
 	{name: 'Masterclasses', href: 'masterclasses', icon: AcademicCapIcon, component: MasterclassesPage},
 	{name: 'Workshops', href: 'workshops', icon: UsersIcon, component: WorkshopsPage},
 	{name: 'Sync Opportunities', href: 'sync', icon: SparklesIcon, component: SyncOpportunitiesPage},
+	{name: 'Settings', href: '/wp-admin', icon: Cog6ToothIcon, adminOnly: true, external: true},
+	{name: 'Profile', href: 'profile', icon: UserCircleIcon, component: SettingsPage, hidden: true},
 ]
 
 const userNavigation = [
-	{name: 'Your profile', href: '/wp-admin'},
+	{name: 'Your profile', href: 'profile', internal: true},
 	{name: 'Settings', href: '/wp-admin'},
 	{name: 'Sign out', href: '#'},
 ]
@@ -55,7 +60,7 @@ function classNames(...classes) {
 }
 
 export default function DashboardLayout() {
-	const {currentProfile, currentUser, notifications, removeNotification} = useApp()
+	const {currentProfile, currentUser, notifications, removeNotification, logoutUrl} = useApp()
 	const [sidebarOpen, setSidebarOpen] = useState(false)
 	const [currentPage, setCurrentPage] = useState('dashboard')
 
@@ -99,22 +104,24 @@ export default function DashboardLayout() {
 								</div>
 								<nav className="flex flex-1 flex-col">
 									<ul role="list" className="-mx-2 flex-1 space-y-1">
-										{navigation.map((item) => (
-											<li key={item.name}>
-												<button
-													onClick={() => handleNavigation(item.href)}
-													className={classNames(
-														currentPage === item.href
-															? 'bg-gray-800 text-white'
-															: 'text-gray-400 hover:bg-gray-800 hover:text-white',
-														'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold w-full text-left',
-													)}
-												>
-													<item.icon aria-hidden="true" className="size-6 shrink-0"/>
-													{item.name}
-												</button>
-											</li>
-										))}
+										{navigation
+											.filter(item => !item.hidden && (!item.adminOnly || currentProfile?.isAdmin))
+											.map((item) => (
+												<li key={item.name}>
+													<button
+														onClick={() => item.external ? window.location.href = item.href : handleNavigation(item.href)}
+														className={classNames(
+															currentPage === item.href
+																? 'bg-gray-800 text-white'
+																: 'text-gray-400 hover:bg-gray-800 hover:text-white',
+															'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold w-full text-left',
+														)}
+													>
+														<item.icon aria-hidden="true" className="size-6 shrink-0"/>
+														{item.name}
+													</button>
+												</li>
+											))}
 									</ul>
 								</nav>
 							</div>
@@ -134,22 +141,24 @@ export default function DashboardLayout() {
 					</div>
 					<nav className="relative mt-8">
 						<ul role="list" className="flex flex-col items-center space-y-1">
-							{navigation.map((item) => (
-								<li key={item.name}>
-									<button
-										onClick={() => handleNavigation(item.href)}
-										className={classNames(
-											currentPage === item.href
-												? 'bg-white/5 text-white'
-												: 'text-gray-400 hover:bg-white/5 hover:text-white',
-											'group flex gap-x-3 rounded-md p-3 text-sm/6 font-semibold',
-										)}
-									>
-										<item.icon aria-hidden="true" className="size-6 shrink-0"/>
-										<span className="sr-only">{item.name}</span>
-									</button>
-								</li>
-							))}
+							{navigation
+								.filter(item => !item.hidden && (!item.adminOnly || currentProfile?.isAdmin))
+								.map((item) => (
+									<li key={item.name}>
+										<button
+											onClick={() => item.external ? window.location.href = item.href : handleNavigation(item.href)}
+											className={classNames(
+												currentPage === item.href
+													? 'bg-white/5 text-white'
+													: 'text-gray-400 hover:bg-white/5 hover:text-white',
+												'group flex gap-x-3 rounded-md p-3 text-sm/6 font-semibold',
+											)}
+										>
+											<item.icon aria-hidden="true" className="size-6 shrink-0"/>
+											<span className="sr-only">{item.name}</span>
+										</button>
+									</li>
+								))}
 						</ul>
 					</nav>
 				</div>
@@ -237,12 +246,21 @@ export default function DashboardLayout() {
 									>
 										{userNavigation.map((item) => (
 											<MenuItem key={item.name}>
-												<a
-													href={item.href}
-													className="block px-3 py-1 text-sm/6 text-gray-900 data-focus:bg-gray-50 data-focus:outline-hidden"
-												>
-													{item.name}
-												</a>
+												{item.internal ? (
+													<button
+														onClick={() => handleNavigation(item.href)}
+														className="block w-full text-left px-3 py-1 text-sm/6 text-gray-900 data-focus:bg-gray-50 data-focus:outline-hidden"
+													>
+														{item.name}
+													</button>
+												) : (
+													<a
+														href={item.name === 'Sign out' ? logoutUrl : item.href}
+														className="block px-3 py-1 text-sm/6 text-gray-900 data-focus:bg-gray-50 data-focus:outline-hidden"
+													>
+														{item.name}
+													</a>
+												)}
 											</MenuItem>
 										))}
 									</MenuItems>

@@ -34,7 +34,6 @@ export default function Lander({loginUrl, registrationUrl}) {
 						<AuthButtons
 							loginUrl={loginUrl}
 							registrationUrl={registrationUrl}
-							variant="horizontal"
 						/>
 					</div>
 				</div>

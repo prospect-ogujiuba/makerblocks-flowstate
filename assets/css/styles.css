@@ -10456,6 +10456,14 @@ a:where(:not(.wp-element-button)) {
   .border-gray-900 {
     border-color: var(--color-gray-900);
   }
+  .border-gray-900\/10 {
+    border-color: color-mix(in srgb, oklch(21% 0.034 264.665deg) 10%, transparent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-gray-900\/10 {
+      border-color: color-mix(in oklab, var(--color-gray-900) 10%, transparent);
+    }
+  }
   .border-gray-950 {
     border-color: var(--color-gray-950);
   }
@@ -32460,6 +32468,11 @@ a:where(:not(.wp-element-button)) {
     color: var(--color-gray-400);
   }
   @media (hover: hover) {
+    .hover\:border-gray-300:hover {
+      border-color: var(--color-gray-300);
+    }
+  }
+  @media (hover: hover) {
     .hover\:bg-gray-50:hover {
       background-color: var(--color-gray-50);
     }
@@ -32475,6 +32488,21 @@ a:where(:not(.wp-element-button)) {
     }
   }
   @media (hover: hover) {
+    .hover\:bg-slate-500:hover {
+      background-color: var(--color-slate-500);
+    }
+  }
+  @media (hover: hover) {
+    .hover\:bg-slate-900:hover {
+      background-color: var(--color-slate-900);
+    }
+  }
+  @media (hover: hover) {
+    .hover\:bg-stone-900:hover {
+      background-color: var(--color-stone-900);
+    }
+  }
+  @media (hover: hover) {
     .hover\:bg-white\/5:hover {
       background-color: color-mix(in srgb, #fff 5%, transparent);
     }
@@ -32487,6 +32515,11 @@ a:where(:not(.wp-element-button)) {
   @media (hover: hover) {
     .hover\:text-gray-500:hover {
       color: var(--color-gray-500);
+    }
+  }
+  @media (hover: hover) {
+    .hover\:text-gray-700:hover {
+      color: var(--color-gray-700);
     }
   }
   @media (hover: hover) {
@@ -32568,6 +32601,10 @@ a:where(:not(.wp-element-button)) {
       outline-offset: 2px;
     }
   }
+  .focus\:outline-none:focus {
+    --tw-outline-style: none;
+    outline-style: none;
+  }
   .focus\:ring-inset:focus {
     --tw-ring-inset: inset;
   }
@@ -32584,6 +32621,15 @@ a:where(:not(.wp-element-button)) {
   }
   .focus-visible\:outline-indigo-600:focus-visible {
     outline-color: var(--color-indigo-600);
+  }
+  .disabled\:cursor-not-allowed:disabled {
+    cursor: not-allowed;
+  }
+  .disabled\:bg-gray-300:disabled {
+    background-color: var(--color-gray-300);
+  }
+  .disabled\:text-gray-400:disabled {
+    color: var(--color-gray-400);
   }
   .data-closed\:-translate-x-full[data-closed] {
     --tw-translate-x: -100%;

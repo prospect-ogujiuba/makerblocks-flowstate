@@ -2,7 +2,7 @@ import {createContext, useContext, useState, useEffect} from 'react'
 
 const AppContext = createContext(undefined)
 
-export function AppProvider({children, currentProfile, loginUrl, registrationUrl}) {
+export function AppProvider({children, currentProfile, loginUrl, registrationUrl, logoutUrl}) {
 	const [currentUser, setCurrentUser] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
 	const [notifications, setNotifications] = useState([])
@@ -63,7 +63,8 @@ export function AppProvider({children, currentProfile, loginUrl, registrationUrl
 		removeNotification,
 		currentProfile,
 		loginUrl,
-		registrationUrl
+		registrationUrl,
+		logoutUrl
 	}
 
 	return <AppContext.Provider value={value}>{children}</AppContext.Provider>
