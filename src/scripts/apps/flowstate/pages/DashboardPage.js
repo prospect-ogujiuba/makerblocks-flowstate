@@ -125,7 +125,7 @@ export default function DashboardPage() {
 			<div className="space-y-4">
 				<div className="flex items-center justify-between">
 					<h2 className="text-lg font-semibold text-gray-900">Recent Tracks</h2>
-					<a href="#/tracks" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+					<a href="#/tracks" className="text-sm font-medium text-slate-600 hover:text-slate-500">
 						View all
 					</a>
 				</div>
@@ -133,12 +133,12 @@ export default function DashboardPage() {
 			</div>
 
 			{/* Quick Actions */}
-			<div className="rounded-lg bg-indigo-50 p-6">
+			<div className="rounded-lg bg-slate-50 p-6">
 				<h3 className="text-base font-semibold text-gray-900">Quick Actions</h3>
 				<div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
 					<a
 						href="#/tracks/upload"
-						className="flex items-center justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
+						className="flex items-center justify-center rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-500"
 					>
 						Upload New Track
 					</a>

@@ -107,7 +107,7 @@ export default function SettingsPage() {
 								'w-full py-2.5 px-4 text-sm font-medium leading-5',
 								'border-b-2 focus:outline-none',
 								selected
-									? 'border-indigo-600 text-indigo-600'
+									? 'border-slate-600 text-slate-600'
 									: 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
 							)
 						}
@@ -123,7 +123,7 @@ export default function SettingsPage() {
 								'w-full py-2.5 px-4 text-sm font-medium leading-5',
 								'border-b-2 focus:outline-none',
 								selected
-									? 'border-indigo-600 text-indigo-600'
+									? 'border-slate-600 text-slate-600'
 									: 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
 							)
 						}
@@ -194,7 +194,7 @@ export default function SettingsPage() {
 										{currentUser?.contributionScore !== undefined && (
 											<div>
 												<p className="text-xs font-medium text-gray-500 uppercase">Contribution Score</p>
-												<p className="mt-1 text-sm font-semibold text-indigo-600">
+												<p className="mt-1 text-sm font-semibold text-slate-600">
 													{currentUser.contributionScore}
 												</p>
 											</div>
@@ -224,7 +224,7 @@ export default function SettingsPage() {
 															setFirstName(e.target.value)
 															setIsEditingProfile(true)
 														}}
-														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm"
 													/>
 												</div>
 											</div>
@@ -243,7 +243,7 @@ export default function SettingsPage() {
 															setLastName(e.target.value)
 															setIsEditingProfile(true)
 														}}
-														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm"
 													/>
 												</div>
 											</div>
@@ -262,7 +262,7 @@ export default function SettingsPage() {
 															setEmail(e.target.value)
 															setIsEditingProfile(true)
 														}}
-														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm"
 													/>
 												</div>
 											</div>
@@ -282,7 +282,7 @@ export default function SettingsPage() {
 															setIsEditingProfile(true)
 														}}
 														placeholder="Tell us about yourself..."
-														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm"
 													/>
 												</div>
 											</div>
@@ -302,7 +302,7 @@ export default function SettingsPage() {
 										<button
 											type="submit"
 											disabled={!isEditingProfile}
-											className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+											className="rounded-md bg-slate-600 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-500 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
 										>
 											Save Changes
 										</button>
@@ -333,7 +333,7 @@ export default function SettingsPage() {
 														type="checkbox"
 														checked={emailNotifications}
 														onChange={(e) => setEmailNotifications(e.target.checked)}
-														className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+														className="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600"
 													/>
 												</div>
 												<div className="ml-3">
@@ -354,7 +354,7 @@ export default function SettingsPage() {
 														type="checkbox"
 														checked={pushNotifications}
 														onChange={(e) => setPushNotifications(e.target.checked)}
-														className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+														className="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600"
 													/>
 												</div>
 												<div className="ml-3">
@@ -375,7 +375,7 @@ export default function SettingsPage() {
 														type="checkbox"
 														checked={newsletter}
 														onChange={(e) => setNewsletter(e.target.checked)}
-														className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+														className="h-4 w-4 rounded border-gray-300 text-slate-600 focus:ring-slate-600"
 													/>
 												</div>
 												<div className="ml-3">
@@ -394,7 +394,7 @@ export default function SettingsPage() {
 									<div className="flex items-center justify-end gap-x-4 border-t border-gray-900/10 px-6 py-4">
 										<button
 											type="submit"
-											className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500 transition-colors"
+											className="rounded-md bg-slate-600 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-500 transition-colors"
 										>
 											Save Preferences
 										</button>
@@ -423,7 +423,7 @@ export default function SettingsPage() {
 														id="current-password"
 														value={currentPassword}
 														onChange={(e) => setCurrentPassword(e.target.value)}
-														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm"
 													/>
 												</div>
 											</div>
@@ -439,7 +439,7 @@ export default function SettingsPage() {
 														id="new-password"
 														value={newPassword}
 														onChange={(e) => setNewPassword(e.target.value)}
-														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm"
 													/>
 												</div>
 												<p className="mt-1 text-xs text-gray-500">Must be at least 8 characters long.</p>
@@ -456,7 +456,7 @@ export default function SettingsPage() {
 														id="confirm-password"
 														value={confirmPassword}
 														onChange={(e) => setConfirmPassword(e.target.value)}
-														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+														className="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm"
 													/>
 												</div>
 											</div>
@@ -468,7 +468,7 @@ export default function SettingsPage() {
 										<button
 											type="submit"
 											disabled={!currentPassword || !newPassword || !confirmPassword}
-											className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-500 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+											className="rounded-md bg-slate-600 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-500 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
 										>
 											Update Password
 										</button>

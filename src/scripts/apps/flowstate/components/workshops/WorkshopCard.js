@@ -14,16 +14,16 @@ export default function WorkshopCard({ workshop, onJoin, onView }) {
 
 	const formatDate = (dateString) => {
 		if (!dateString) return 'TBD'
-		return new Date(dateString).toLocaleDateString('en-US', { 
-			year: 'numeric', 
-			month: 'short', 
-			day: 'numeric' 
+		return new Date(dateString).toLocaleDateString('en-US', {
+			year: 'numeric',
+			month: 'short',
+			day: 'numeric'
 		})
 	}
 
 	const isFull = workshop.maxParticipants && workshop.participantCount >= workshop.maxParticipants
-	const spotsLeft = workshop.maxParticipants 
-		? workshop.maxParticipants - workshop.participantCount 
+	const spotsLeft = workshop.maxParticipants
+		? workshop.maxParticipants - workshop.participantCount
 		: null
 
 	return (
@@ -99,7 +99,7 @@ export default function WorkshopCard({ workshop, onJoin, onView }) {
 						<button
 							type="button"
 							onClick={() => onJoin(workshop)}
-							className="flex-1 inline-flex items-center justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-indigo-500"
+							className="flex-1 inline-flex items-center justify-center rounded-md bg-slate-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-slate-500"
 						>
 							Join Workshop
 						</button>

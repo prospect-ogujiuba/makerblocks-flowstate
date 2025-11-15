@@ -6,7 +6,7 @@ export default function StatCard({ name, value, icon: Icon, change, changeType =
 			<div className="flex items-center">
 				<div className="flex-shrink-0">
 					{Icon && (
-						<div className="rounded-md bg-indigo-500 p-3">
+						<div className="rounded-md bg-slate-500 p-3">
 							<Icon className="h-6 w-6 text-white" aria-hidden="true" />
 						</div>
 					)}

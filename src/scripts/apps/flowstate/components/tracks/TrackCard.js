@@ -74,7 +74,7 @@ export default function TrackCard({ track, onPlay, onDownload }) {
 						<button
 							type="button"
 							onClick={() => onPlay(track)}
-							className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-500"
+							className="inline-flex items-center rounded-md bg-slate-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-slate-500"
 						>
 							<PlayIcon className="h-4 w-4 mr-1" />
 							Play

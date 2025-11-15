@@ -95,19 +95,19 @@ export default function PlacementsPage() {
 	return (
 		<div className="space-y-6">
 			{/* Header */}
+				<button
+					type="button"
+					onClick={handleCreate}
+					className="absolute right-4 inline-flex items-center rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-500"
+				>
+					<PlusIcon className="h-5 w-5 mr-1.5"/>
+					Add Placement
+				</button>
 			<div className="flex items-center justify-between">
 				<div>
 					<h1 className="text-2xl font-bold text-gray-900">{currentProfile.name}'s Placements</h1>
 					<p className="mt-1 text-sm text-gray-500">Track your music placements and deals</p>
 				</div>
-				<button
-					type="button"
-					onClick={handleCreate}
-					className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
-				>
-					<PlusIcon className="h-5 w-5 mr-1.5"/>
-					Add Placement
-				</button>
 			</div>
 
 			{/* Stats Summary */}
@@ -139,7 +139,7 @@ export default function PlacementsPage() {
 					id="status-filter"
 					value={filterStatus}
 					onChange={(e) => setFilterStatus(e.target.value)}
-					className="rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm"
+					className="rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-slate-600 sm:text-sm"
 				>
 					<option value="all">All Statuses</option>
 					<option value="pending">Pending</option>

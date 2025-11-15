@@ -8,7 +8,7 @@ export default function LoadingSpinner({ size = 'md', className = '' }) {
 	return (
 		<div className={`flex justify-center items-center ${className}`}>
 			<div
-				className={`animate-spin rounded-full border-b-2 border-indigo-600 ${sizeClasses[size]}`}
+				className={`animate-spin rounded-full border-b-2 border-yellow-600 ${sizeClasses[size]}`}
 				role="status"
 			>
 				<span className="sr-only">Loading...</span>

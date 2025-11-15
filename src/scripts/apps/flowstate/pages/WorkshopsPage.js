@@ -117,19 +117,19 @@ export default function WorkshopsPage() {
 	return (
 		<div className="space-y-6">
 			{/* Header */}
+				<button
+					type="button"
+					onClick={handleCreate}
+					className="absolute right-4 inline-flex items-center rounded-md bg-slate-600 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-500"
+				>
+					<PlusIcon className="h-5 w-5 mr-1.5" />
+					Create Workshop
+				</button>
 			<div className="flex items-center justify-between">
 				<div>
 					<h1 className="text-2xl font-bold text-gray-900">Workshops</h1>
 					<p className="mt-1 text-sm text-gray-500">Collaborate with other producers in focused sessions</p>
 				</div>
-				<button
-					type="button"
-					onClick={handleCreate}
-					className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500"
-				>
-					<PlusIcon className="h-5 w-5 mr-1.5" />
-					Create Workshop
-				</button>
 			</div>
 
 			{/* Stats */}
@@ -164,7 +164,7 @@ export default function WorkshopsPage() {
 							placeholder="Search workshops..."
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
-							className="block w-full rounded-md border-0 py-2 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+							className="block w-full rounded-md border-0 py-2 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-slate-600 sm:text-sm"
 						/>
 					</div>
 				</div>
@@ -174,7 +174,7 @@ export default function WorkshopsPage() {
 					<select
 						value={filterStatus}
 						onChange={(e) => setFilterStatus(e.target.value)}
-						className="block w-full rounded-md border-0 py-2 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm"
+						className="block w-full rounded-md border-0 py-2 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-slate-600 sm:text-sm"
 					>
 						<option value="all">All Status</option>
 						<option value="planned">Planned</option>

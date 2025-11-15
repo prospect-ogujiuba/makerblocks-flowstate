@@ -88,7 +88,7 @@ export default function MasterclassCard({ masterclass, onEnroll, onView }) {
 							<button
 								type="button"
 								onClick={() => onEnroll(masterclass)}
-								className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-indigo-500"
+								className="inline-flex items-center rounded-md bg-slate-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-slate-500"
 							>
 								<AcademicCapIcon className="h-4 w-4 mr-1" />
 								Enroll
